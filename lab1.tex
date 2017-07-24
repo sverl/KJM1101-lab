@@ -1,0 +1,362 @@
+% !TeX spellcheck = nb_NO
+\documentclass[hidelinks,12pt,norsk,a4paper,fleqn]{scrartcl}
+
+% Technical
+\usepackage[T1]{fontenc}
+
+% Layout
+\usepackage[table]{xcolor}
+
+% Typography
+\usepackage{microtype}
+
+% Localization
+\usepackage{babel}
+\usepackage{isodate}
+%\usepackage{icomma}
+
+% Fonts
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{positioning}
+\usetikzlibrary{tikzmark}
+\usetikzlibrary{backgrounds}
+%\newcommand{\mathtikzmark}[2]{\tikz[baseline={(#1.base)},remember picture] \node (#1) {\ensuremath{#2}};}
+
+\usepackage{comment}
+
+\usepackage{url}
+
+\usepackage{enumitem}
+
+\usepackage{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref}
+\crefformat{footnote}{#2\footnotemark[#1]#3}
+
+%\usepackage{float}
+\usepackage{floatrow}
+\floatsetup[table]{capposition=top}
+
+\usepackage{minted}    
+\floatsetup[listing]{style=Plaintop}
+\AtBeginEnvironment{listing}{\setcounter{listing}{\value{lstlisting}}}
+\AtEndEnvironment{listing}{\stepcounter{lstlisting}}
+
+
+\usepackage{siunitx}
+\sisetup{output-decimal-marker = {,}}
+\sisetup{exponent-product=\cdot}
+
+\usepackage{chemmacros}
+
+\usepackage{booktabs}
+
+
+
+
+\usepackage[textsize=scriptsize]{todonotes}
+
+\usepackage{tabularx}
+
+\usepackage{refcheck}
+\norefnames
+
+\title{Laboratorieoppgave 1:\\
+Volumetrisk nøyaktighet og presisjon}
+\author{}
+\date{}
+
+\begin{document}
+			
+	\maketitle
+	
+	\section{Prelab}
+	
+	\subsection{Mål og hensikt}
+	Vite hvordan fullpipette, målesylinder og målebeger brukes på korrekt vis for å oppnå høy presisjon.
+	
+	Kunne beregne nødvendig masse for tillaging av løsninger med en bestemt konsentrasjon.
+	
+	Kunne vurdere presisjon og nøyaktighet av data ved å tolke beregnet gjennomsnitt og standardavvik.
+	
+	\subsection{Statistikk}
+	
+	\paragraph{Nøyaktighet}
+	Nøyaktighet er et mål på hvor nærme målte verdier er den faktiske verdien, for eksempel om et $\pH$-meter viser den faktiske $\pH$en i en løsning. Dersom gjennomsnittet til flere måleverdier er nærme den faktiske verdien sier man at resultatet er nøyaktig.
+	
+	Systematiske feil er når en feil gjentas for hver måling. Denne typen feil fører til unøyaktige målinger. For eksempel kan en ukalibrert vekt konsekvent vise \SI{0.1}{g} for mye.
+	
+	Gjennomsnittet $\bar{x}$ til $n$ målinger $x_1, x_2, \ldots, x_n$ er gitt ved
+	\begin{align*}
+		\bar{x} &= \frac{1}{n}\sum_{i=1}^{n}x_i\\
+		&=\frac{1}{n}\left(x_1 + x_2 + \dots + x_n\right).
+	\end{align*}
+	
+	Tegnet $\Sigma$ uttales \emph{sigma} er en stor, gresk \emph{s} og står for sum. Det til høyre for $\Sigma$ skal legges sammen. Under $\Sigma$ står det en variabel (i dette tilfellet $i$) og hva den skal starte med å være (her starter den på 1). Så skal variabelen økes med 1 til og med den når det som står over $\Sigma$.
+	
+	For eksempel hvis en reaksjon er utført fire ganger og det ble produsert henholdsvis $x_1=\SI{2.94}{g}$, $x_2=\SI{3.10}{g}$, $x_3=\SI{2.80}{g}$ og $x_4=\SI{2.91}{g}$, altså er $n=4$. Gjennomsnittet er derfor
+	\begin{align*}
+		\bar{x} &= \frac{1}{n}\sum_{i=1}^{n}x_i\\
+		&=\frac{1}{n}\left(x_1 + x_2 + \dots + x_n\right)\\
+		&=\frac{1}{4}\left(\SI{2.94}{g} + \SI{3.10}{g} + \SI{2.80}{g} + \SI{2.91}{g}\right)\\
+		&=\SI{2.9375}{g}\\
+		&\approx\SI{2.94}{g}
+	\end{align*}
+	der det er rundet av til antall gjeldende siffer i siste linje.
+	
+	\begin{comment}
+		\tikzstyle{every picture}+=[remember picture]
+		\everymath{\displaystyle}
+		\begin{equation*}
+		\bar{x}=\frac{1}{n}\sum_{
+		\tikz[baseline]{
+		\node[anchor=base, inner sep=0] (idx)
+		{$\scriptstyle i$};
+		}=
+		\tikz[baseline]{
+		\node[anchor=base, inner sep=0] (idxs)
+		{$\scriptstyle 1$};
+		}
+		}^{
+		\tikz[baseline]{
+		\node[anchor=base, inner sep=0] (idxe)
+		{$\scriptstyle n$};
+		}
+		}
+		\tikz[baseline]{
+		\node[anchor=base, inner sep=0] (ele)
+		{$x_i$};
+		}
+		\tikz[overlay]{
+		\draw [->] (idx.south) to +(0,-.5) to +(-.5,-.5) node[left] {indeksvariabel};
+		\draw [->] (idxs.south) to +(0,-.5) to +(.5,-.5) node[right]{startindeks};
+		\draw [->] (idxe.north) to +(0,.5) to +(.5,.5) node[right]{sluttindeks};
+		\draw [->] (ele.east) to +(.5,0) node[right]{uttrykk som summeres};
+		\useasboundingbox (-5,2) rectangle (6,-2);
+		}
+		\end{equation*}
+	\end{comment}
+	
+	\paragraph{Presisjon}
+	Presisjon er et mål på spredningen til målte verdier. Dersom standardavviket til målingene er lite, er resultatet presist.
+	
+	Tilfeldige feil fører til upresise målinger. Et eksempel på tilfeldige feil er et pH-meter som vipper mellom \num{5.2} og \num{5.5} mens den står i en løsning.
+	
+	Variansen $s^2$ til $n$ målinger $x_1, x_2, \ldots, x_n$ er gitt ved
+	\begin{align*}
+		s^2 &= \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2 \\
+		&=\frac{1}{n-1}\left[(x_1-\bar{x})^2 + (x_2-\bar{x})^2 + \dots + (x_n-\bar{x})^2\right]
+	\end{align*}
+	der $\bar{x}$ er gjennsomsnittet. Standardavvik $s$ er følgelig gitt ved	$s=\sqrt{s^2}$.
+
+	
+	For de samme verdiene i eksempelet for gjennomsnitt blir variansen
+	\begin{align*}
+		s^2 &= \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2 \\
+		&=\frac{1}{n-1}\left[(x_1-\bar{x})^2 + (x_2-\bar{x})^2 + \dots + (x_n-\bar{x})^2\right]\\
+		&=\frac{1}{4-1}\left[(\SI{2.94}{g}-\SI{2.94}{g})^2 + ( \SI{3.10}{g}-\SI{2.94}{g})^2\right. + \\
+		&\phantom{=\frac{1}{4-1}\left[\right.}\left.  (\SI{2.80}{g}-\SI{2.94}{g})^2 + (\SI{2.91}{g}-\SI{2.94}{g})^2\right]\\
+		&\approx \SI{0.01536}{g^2}
+	\end{align*}
+	Som man kan se blir dette fort mye regning, og det lønner seg å gjøre dette i et regneprogram eller programmere det.
+	
+	Standardavviket blir $s=\sqrt{\SI{0.01536}{g^2}}\approx\SI{0.12}{g}$. Vanligvis velger man å oppgi standardavvik med ett eller to signifikante siffer. Gjennomsnittet var \SI{2.94}{g} og med usikkerhet oppgir man det som \SI{2.94 +- 0.12}{g} eller \SI[separate-uncertainty=true]{2.94 +- 0.12}{g}.
+	
+	\paragraph{Relativ presisjon}
+	Det er ofte lite hensiktsmessig og sammenligne standardavvik for målinger med veldig forskjellig gjennomsnitt. Tenk deg at en kjemiker trenger \SI{1000}{g} reaktant og \SI{1}{g} katalysator til en reaksjon. Hvis standardavviket for begge oppmålingene er \SI{1}{g} er variasjonen i målingene relativt til gjennomsnittet veldig forskjellig for reaktanten og katalysatoren. Derfor bruker man noen gang relativt standardavviket $c_\mathrm{v}$ gitt ved
+	\begin{equation*}
+		c_\mathrm{v}=\frac{s}{\bar{x}}
+	\end{equation*}
+	der $s$ er standardavviket og $\bar{x}$ er gjennomsnittet. Det relative standardavviket er ofte oppgitt i prosent.
+		
+	\subsection{Praktiske teknikker}
+	
+	\paragraph{Målesylinder og målebeger}
+	Hell væske i begeret til bunnen av menisken er nærme merket for ønsket volum. Fyll opp resten eller ta ut overflødig væske med en pasteurpipette til bunnen av menisken er ved merket.
+	
+	\paragraph{Peleusballong}
+	Peleusballongen har tre ventiler merket \emph{A}, \emph{S} og \emph{E}. Når en ventil klemmes, åpnes den slik at luft kan strømme gjennom. Tenk gjennom hvordan luften kan strømme i ballongen når de forskjellige ventilene åpnes. Husk å sette ballongen \emph{forsiktig} på pipetten så den ikke brekker.
+	
+	For å suge væske opp i pipetten må luften i ballongen ut først. Dette gjøres ved å åpne \emph{A} og klemme ballongen. Når kan væske suges opp i pipetten ved å åpne \emph{S} forsiktig. Hvis ballongen fylles helt må luft, er det ikke noe sug lenger. Da må ballongen tømmes igjen ved å åpne \emph{A} igjen.
+	
+	For å slippe væske ut av pipetten åpnes ventil \emph{E}. Dersom all væsken i pipetten skal slippes ut, er det ofte enklest å bare ta av ballongen.
+	
+	Det er viktig at det ikke kommer væske opp i ballongen siden den da kan renne ned senere og enten endre volumet eller kontaminere væsken som pipetteres. Hvis du får væske opp i ballongen så si ifra til en veileder så den kan rengjøres. De vanligste måtene væske kommer opp i ballongen på er at man trykker for hardt på \emph{S}-ventilen eller at man holder pipettespissen nede i bunnen av begeret man suger væske opp fra. Da dekker bunnen fra hullet i pipetten inntil man løfter den og væsken skyter opp i ballongen.
+	
+	\paragraph{Rengjøring av pipette}
+	Før en pipette kan brukes, må den selvsagt være ren. For at pipetten skal være så ren som mulig, vaskes pipetten med løsningen som skal pipetteres. Dette gjøres ved å fylle pipetten til den er omtrent en tredel full. Pipetten holdes så over en vask og på skrå og roteres slik at væsken dekker hele veggen i pipetten, også litt over merket. Det kan være lurt å ta av ballongen mens man gjør dette så man ikke får væske opp i den.
+	
+	Når pipetten er ren, skal innsiden være dekken med en tynn væskefilm. Dersom det dannes dråper på veggen, er ikke pipetten ren.
+	
+	\paragraph{Pipettering}
+	Sug væsken opp i pipetten til litt over merket. Løft pipetten ut av løsningen, og tørk spissen med lofritt papir så det ikke henger noe væske på utsiden. Hold et beger på skrå og la pipettespissen hvile mot veggen mens du tapper væsken ned inntil bunnen av menisken når merket. Dette sørger for at det ikke henger en dråpe på spissen. Hvis du går forbi merket, må du starte på nytt.
+	
+	På pipetten står det vanligvis \emph{Ex + 15s}. Det betyr at pipetten er designet for å levere (ikke inneholde) det angitte volumet og at det tar \SI{15}{s} å levere volumet. Når du er klar til å slippe væsken ned i et beger holder du begeret på skrå og lar pipettespissen hvile mot veggen, og så kan man ta av ballongen så all væsken renner ut. Etter at all væsken tilsynelatende er levert, fortsette å holde pipetten mot veggen og tell til 15. 
+	
+	\paragraph{Tillaging av løsninger}
+	Plasser et veieskip på vekten og tarer. Fyll veieskipet med en spatel til ønsket masse. Overfør kjemikaliet til en målekolbe. Fyll litt løsemiddel i målekolben med en trakt og rist forsiktig til alt er løst, men på at minst mulig kommer på veggen over merket. Fyll så opp til merket med resten av løsemiddelet. Igjen kan det være lurt å bruke en pasteurpipette når du nærmer deg merket, men i dette tilfellet kan du ikke ta ut løsning hvis du går over.
+	
+	Dersom du veier ut for mye av stoffet må du ikke ta det tilbake i beholderen siden det kan kontaminere resten av stoffet i beholderen. Bare kast det overflødige stoffet.
+	
+	I det fleste tilfeller er det ikke så viktig hvor mye stoff du har, bare at du vet nøyaktig hvor mye du har. I litteraturen står det derfor ofte \emph{nøyaktig omtrent} som betyr vei ut omtrent så mye stoff som er oppgitt, men noter deg akkurat hvor mye det var.
+	
+	\subsection{Oppgaver}
+	\begin{enumerate}[label=\alph*)]
+		\item Beregn antall gram \ch{NaCl} som må løses i vann for å lage en \SI{250.0}{mL} \SI{3.000}{M} \ch{NaCl}-løsning.\label{exercise}
+		
+		\item Hvorfor er det nødvendig å vite temperaturen til løsningen når man utfører en kalibrering?
+		
+		\item Hvorfor må hvert forsøk gjentas flere ganger?
+		
+		\item \cref{observed_pip} viser observert masse i en \SI{10}{mL}-pipette. Fyll ut de tomme, skraverte cellene i tabellen. Du trenger å bruke \cref{density}. \label{real} \todo{Er dette en god kilde? Det er en matematisk modell (greit nok), men journalen virker tvilsom. F.eks. står det nacl (ikke NaCl) i tittelen...}
+		
+		\item Hva er det reelle volumet med usikkerhet i \ref{real}?
+		
+		\item \cref{observed_salt} viser observert masse i en \SI{10}{mL}-pipette fylt med \SI{1.000}{M} \ch{NaCl}-løsning. Fyll ut de tomme, skraverte cellene i tabellen for tettheten til saltløsningen. \label{real_salt} 
+		
+		\item Hvordan stemmer verdien i \ref{real_salt} med verdien i \cref{density}.
+		
+		\item Hvordan forventer du at presisjonen til en pipette, målesylinder og målebeger er i forhold til hverandre, og hvordan kan du finne og sammenligne disse presisjonene?	
+			
+	\end{enumerate}
+
+	\begin{table}[h]
+		\caption{Tetthet til vann og \ch{NaCl}-løsninger ved utvalgte temperaturer \cite{Gavrila2015}.}
+		\label{density}
+		\begin{tabular}{
+				S[table-number-alignment=left]
+				S[table-number-alignment=left]
+				S[table-number-alignment=left]
+				S[table-number-alignment=left]}
+			\toprule
+			$t/\si{\celsius}$ & $\rho_\text{vann}/\si{g.mL^{-1}}$ & $\rho_\text{\SI{1,00}{M} \ch{NaCl}}/\si{g.mL^{-1}}$ & $\rho_\text{\SI{3,00}{M} \ch{NaCl}}/\si{g.mL^{-1}}$ \\ \midrule
+			15 & 0.99129 & 1,0396 & 1,1163 \\
+			16 & 0.99897 & 1,0394 & 1,1159 \\
+			17 & 0.99889 & 1,0391 & 1,1155 \\
+			18 & 0.99862 & 1,0388 & 1,1151 \\
+			19 & 0.99843 & 1,0385 & 1,1147 \\
+			20 & 0.99823 & 1,0382 & 1,1144 \\
+			21 & 0.99802 & 1,0379 & 1,1140 \\
+			22 & 0.99780 & 1,0376 & 1,1136 \\
+			23 & 0.99756 & 1,0373 & 1,1132 \\
+			24 & 0.99733 & 1,0370 & 1,1128 \\
+			25 & 0.99708 & 1,0367 & 1,1124 \\ \bottomrule 
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[p]
+		\caption{Observert masse av vann i \SI{10}{mL}-pipette.}
+		\label{observed_pip}
+		\begin{tabular}{rSp{4cm}Sp{4cm}}
+			\toprule
+			\multicolumn{1}{c}{Replikat} & \multicolumn{1}{c}{$t/\si{\celsius}$} & \multicolumn{1}{c}{$\rho_\text{vann}/$\textcolor{blue!10}{\rule[-1mm]{15mm}{5mm}}} & \multicolumn{1}{c}{$m/\si{g}$} & \multicolumn{1}{c}{$V/$\textcolor{blue!10}{\rule[-1mm]{15mm}{5mm}}} \\ \midrule
+			1 & 22 & \cellcolor{blue!10} & 10,003 & \cellcolor{blue!10} \\
+			2 & 22 & \cellcolor{blue!10} &  9,980 & \cellcolor{blue!10} \\
+			3 & 23 & \cellcolor{blue!10} &  9,988 & \cellcolor{blue!10} \\
+			4 & 23 & \cellcolor{blue!10} &  9,991 & \cellcolor{blue!10} \\
+			5 & 22 & \cellcolor{blue!10} &  9,985 & \cellcolor{blue!10} \\ \midrule
+			\multicolumn{4}{r}{gjennomsnitt} & \cellcolor{blue!10} \\
+			\multicolumn{4}{r}{standardavvik} & \cellcolor{blue!10} \\
+			\multicolumn{4}{r}{relativt standardavvik} & \cellcolor{blue!10} \\ \bottomrule 
+		\end{tabular}
+	\end{table}
+
+	\begin{table}[p]
+		\caption{Observert masse av \SI{1.000}{M} \ch{NaCl}-løsning i \SI{10}{mL}-pipette.}
+		\label{observed_salt}
+		\begin{tabular}{rSS|p{4cm}}
+			\toprule
+			\multicolumn{1}{c}{Replikat} & \multicolumn{1}{c}{$t/\si{\celsius}$} & \multicolumn{1}{c}{$m/\si{g}$} & \multicolumn{1}{c}{$\rho_\text{\SI{1.000}{M} \ch{NaCl}}/$\textcolor{blue!10}{\rule[-1mm]{15mm}{5mm}}} \\ \midrule
+			1 & 21 & 10,501 & \cellcolor{blue!10} \\
+			2 & 22 & 10,446 & \cellcolor{blue!10} \\
+			3 & 22 & 10,482 & \cellcolor{blue!10} \\
+			4 & 22 & 10,449 & \cellcolor{blue!10} \\
+			5 & 23 & 10,497 & \cellcolor{blue!10} \\ \midrule
+			\multicolumn{3}{r|}{gjennomsnitt} & \cellcolor{blue!10} \\
+			\multicolumn{3}{r|}{standardavvik} & \cellcolor{blue!10} \\
+			\multicolumn{3}{r|}{relativt standardavvik} & \cellcolor{blue!10} \\ \bottomrule 
+		\end{tabular}
+	\end{table}
+
+	\bibliographystyle{chem-angew}
+	\bibliography{lab1} 
+	
+	\clearpage
+	\section{Labøvelse}
+	
+	\subsection{Mål og hensikt}
+	Bestemme det eksakte volumet til en fullpipette, en målesylinder og et målebeger, og få praktisk erfaring for korrekt bruk å volumetrisk utstyr som er viktig for senere labøvelser.
+	
+	Vurdere presisjon og nøyaktighet av data ved å tolke beregnet gjennomsnitt og standardavvik.
+	
+	\subsection{Teori og bakgrunn}
+	Det 
+	
+	
+	\subsection{Eksperimentelt}
+	
+	\begin{table}[H]
+		\caption{Utstyr}
+		\begin{tabular}{ll}
+			\toprule
+			vekt & (felles) \\
+			pipette & \SI{25}{mL} \\
+			målesylinder & \SI{25}{mL} \\
+			målebeger & \SI{25}{mL} \\
+			termometer & \\
+			veieskip & \\
+			peleusballong & \\
+			hansker & \\
+			natriumklorid & \\
+			ionebyttet vann & \\ \bottomrule 
+		\end{tabular}
+	\end{table}
+	
+	Noter hvilken vekt du benytter og toleransen dens. Du burde bruke samme vekt til alle målingene dine for at de skal være konsekvente.
+	
+	\subsubsection{Kalibrering}
+	
+	Denne delen skal gjentas fem ganger hver for pipetten, målesylinderen og målebegeret. 
+	
+	Noter temeraturen til vannet du bruker. 
+	
+	\paragraph{Kalibrering av pipette}
+	Vei et rent beger glass. Pipetter vann over i begerglasset og vei på nytt.
+	
+	\paragraph{Kalibrering av målesylinder og målebeger}
+	Vei det rene målesylinderen/målebegeret. Fyll vann til merket og vei på nytt.
+	
+	\subsubsection{Tetthet til saltløsning}
+	Lag en \SI{3.000}{M} \ch{NaCl}-løsning i en \SI{250.0}{mL} målekolbe. Se oppgave \ref{exercise} i prelabben for hvor mye salt du trenger. 
+	
+	Vei et rent begerglass. Bruk den kalibrerte pipetten og pipetter \SI{25}{mL} av saltløsningen over i begerglasset og vei på nytt. Gjenta dette fem ganger.
+	
+	\section{Rapport}
+	Øverst på rapporten skal det stå:
+	\begin{itemize}
+		\item Dato for gjennomføring av labøvelsen.
+		\item Navn og plassnummer på laboratoriet.
+		\item Navn på labpartner.
+		\item Gruppenummer.
+		\item Gruppelærer.
+	\end{itemize}
+
+	Rapporten skal inneholde:
+	\paragraph{Hensikt}
+	Forklar \emph{kort} hensikten og målet med øvelsen med dine egne ord.
+	
+	\paragraph{Eksperimentelt}
+	Forklar \emph{kort} den eksperimentelle delen med egne ord.
+	
+	\paragraph{Resultater}
+	Oppsummer målingene dine i tabeller.
+	
+	Beregn gjennomsnitt, standardavvik og relativt standardavvik for pipetten, målesylinderen og målebegeret.
+	
+	\paragraph{Diskusjon}
+	Vurder resultatene dine. Hvordan sammenligner nøyaktigheten og presisjonen til det forskjellige utstyret? Stemmer det overens med forventningene?
+	
+	Var det avvik fra prosedyren? Gikk noe galt under forsøket?
+	
+\end{document}
