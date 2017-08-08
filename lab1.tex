@@ -83,9 +83,7 @@ Volumetrisk nøyaktighet og presisjon}
 	\subsection{Statistikk}
 	
 	\paragraph{Nøyaktighet}
-	Nøyaktighet er et mål på hvor nærme målte verdier er den faktiske verdien, for eksempel om et $\pH$-meter viser den faktiske $\pH$en i en løsning. Dersom gjennomsnittet til flere måleverdier er nærme den faktiske verdien sier man at resultatet er nøyaktig.
-	
-	Systematiske feil er når en feil gjentas for hver måling. Denne typen feil fører til unøyaktige målinger. For eksempel kan en ukalibrert vekt konsekvent vise \SI{0.1}{g} for mye.
+	Nøyaktighet er et mål på hvor nærme målte verdier er den faktiske verdien, for eksempel om et $\pH$-meter viser den faktiske $\pH$en i en løsning eller om den viser feil. Dersom gjennomsnittet til flere måleverdier er nærme den faktiske verdien sier man at resultatet er nøyaktig.
 	
 	Gjennomsnittet $\bar{x}$ til $n$ målinger $x_1, x_2, \ldots, x_n$ er gitt ved
 	\begin{align*}
@@ -95,7 +93,7 @@ Volumetrisk nøyaktighet og presisjon}
 	
 	Tegnet $\Sigma$ uttales \emph{sigma} er en stor, gresk \emph{s} og står for sum. Det til høyre for $\Sigma$ skal legges sammen. Under $\Sigma$ står det en variabel (i dette tilfellet $i$) og hva den skal starte med å være (her starter den på 1). Så skal variabelen økes med 1 til og med den når det som står over $\Sigma$.
 	
-	For eksempel hvis en reaksjon er utført fire ganger og det ble produsert henholdsvis $x_1=\SI{2.94}{g}$, $x_2=\SI{3.10}{g}$, $x_3=\SI{2.80}{g}$ og $x_4=\SI{2.91}{g}$, altså er $n=4$. Gjennomsnittet er derfor
+	For eksempel ble en reaksjon utført fire ganger og massen av produktet i reaksjonen ble målt til $x_1=\SI{2.94}{g}$, $x_2=\SI{3.10}{g}$, $x_3=\SI{2.80}{g}$ og $x_4=\SI{2.91}{g}$. Da er $n=4$ og gjennomsnittet er
 	\begin{align*}
 		\bar{x} &= \frac{1}{n}\sum_{i=1}^{n}x_i\\
 		&=\frac{1}{n}\left(x_1 + x_2 + \dots + x_n\right)\\
@@ -104,6 +102,8 @@ Volumetrisk nøyaktighet og presisjon}
 		&\approx\SI{2.94}{g}
 	\end{align*}
 	der det er rundet av til antall gjeldende siffer i siste linje.
+	
+	Systematiske feil er når en feil gjentas for hver måling. Denne typen feil fører til unøyaktige målinger. For eksempel kan en ukalibrert vekt konsekvent vise \SI{0.1}{g} for mye, og da blir også gjennomsnittet \SI{0.1}{g} for mye.
 	
 	\begin{comment}
 		\tikzstyle{every picture}+=[remember picture]
@@ -150,7 +150,6 @@ Volumetrisk nøyaktighet og presisjon}
 	\end{align*}
 	der $\bar{x}$ er gjennsomsnittet. Standardavvik $s$ er følgelig gitt ved	$s=\sqrt{s^2}$.
 
-	
 	For de samme verdiene i eksempelet for gjennomsnitt blir variansen
 	\begin{align*}
 		s^2 &= \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2 \\
@@ -161,10 +160,10 @@ Volumetrisk nøyaktighet og presisjon}
 	\end{align*}
 	Som man kan se blir dette fort mye regning, og det lønner seg å gjøre dette i et regneprogram eller programmere det.
 	
-	Standardavviket blir $s=\sqrt{\SI{0.01536}{g^2}}\approx\SI{0.12}{g}$. Vanligvis velger man å oppgi standardavvik med ett eller to signifikante siffer. Gjennomsnittet var \SI{2.94}{g} og med usikkerhet oppgir man det som \SI{2.94 +- 0.12}{g} eller \SI[separate-uncertainty=true]{2.94 +- 0.12}{g}. Legg merke til at dette er en større usikkerhet en det gjeldende siffer viser.
+	Standardavviket blir $s=\sqrt{\SI{0.01536}{g^2}}\approx\SI{0.12}{g}$. Vanligvis velger man å oppgi standardavvik med ett eller to signifikante siffer. Gjennomsnittet var \SI{2.94}{g} og med usikkerhet oppgir man det som \SI{2.94 +- 0.12}{g} eller \SI[separate-uncertainty=true]{2.94 +- 0.12}{g}. Legg merke til at dette er en større usikkerhet en det gjeldende siffer viser i dette tilfellet så gjeldende siffer viser tilsynelatende bedre presisjon.
 	
 	\paragraph{Relativ presisjon}
-	Det er ofte lite hensiktsmessig og sammenligne standardavvik for målinger med veldig forskjellig gjennomsnitt. Tenk deg at en kjemiker trenger \SI{1000}{g} reaktant og \SI{1}{g} katalysator til en reaksjon. Hvis standardavviket for begge oppmålingene er \SI{1}{g} er variasjonen i målingene relativt til gjennomsnittet veldig forskjellig for reaktanten og katalysatoren. Derfor bruker man noen gang relativt standardavviket $c_\mathrm{v}$ gitt ved
+	Det er ofte lite hensiktsmessig og sammenligne standardavvik for målinger med veldig forskjellig gjennomsnitt. Tenk deg at en kjemiker trenger \SI{1000}{g} reaktant og \SI{1}{g} katalysator til en reaksjon. Hvis standardavviket for begge oppmålingene er \SI{1}{g} er variasjonen relativt større for katalysatoren enn reaktanten. Derfor bruker man noen ganger relativt standardavviket $c_\mathrm{v}$ gitt ved
 	\begin{equation*}
 		c_\mathrm{v}=\frac{s}{\bar{x}}
 	\end{equation*}
@@ -172,20 +171,17 @@ Volumetrisk nøyaktighet og presisjon}
 		
 	\subsection{Praktiske teknikker}
 	
-	\paragraph{Målesylinder og målebeger}
-	Hell væske i begeret til bunnen av menisken er nærme merket for ønsket volum. Fyll opp resten eller ta ut overflødig væske med en pasteurpipette til bunnen av menisken er ved merket.
-	
 	\paragraph{Peleusballong}
-	Peleusballongen har tre ventiler merket \emph{A}, \emph{S} og \emph{E}. Når en ventil klemmes, åpnes den slik at luft kan strømme gjennom. Tenk gjennom hvordan luften kan strømme i ballongen når de forskjellige ventilene åpnes. Husk å sette ballongen \emph{forsiktig} på pipetten så den ikke brekker.
+	Peleusballongen har tre ventiler merket \emph{A}, \emph{S} og \emph{E} som står henholdsvis for \emph{air}, \emph{suck} og \emph{empty}. Når en ventil klemmes, åpnes den slik at luft kan strømme gjennom. Tenk gjennom hvordan luften kan strømme i ballongen når de forskjellige ventilene åpnes. Husk å sette ballongen \emph{forsiktig} på pipetten så den ikke brekker.
 	
-	For å suge væske opp i pipetten må luften i ballongen ut først. Dette gjøres ved å åpne \emph{A} og klemme ballongen. Når kan væske suges opp i pipetten ved å åpne \emph{S} forsiktig. Hvis ballongen fylles helt må luft, er det ikke noe sug lenger. Da må ballongen tømmes igjen ved å åpne \emph{A} igjen.
+	For å suge væske opp i pipetten må luften i ballongen ut først. Dette gjøres ved å åpne \emph{A} og klemme ballongen. Nå kan væske suges opp i pipetten ved å åpne \emph{S} forsiktig. Hvis ballongen fylles helt må luft, er det ikke noe sug lenger. Da må ballongen tømmes igjen ved å åpne \emph{A} igjen.
 	
 	For å slippe væske ut av pipetten åpnes ventil \emph{E}. Dersom all væsken i pipetten skal slippes ut, er det ofte enklest å bare ta av ballongen.
 	
-	Det er viktig at det ikke kommer væske opp i ballongen siden den da kan renne ned senere og enten endre volumet eller kontaminere væsken som pipetteres. Hvis du får væske opp i ballongen så si ifra til en veileder så den kan rengjøres. De vanligste måtene væske kommer opp i ballongen på er at man trykker for hardt på \emph{S}-ventilen eller at man holder pipettespissen nede i bunnen av begeret man suger væske opp fra. Da dekker bunnen fra hullet i pipetten inntil man løfter den og væsken skyter opp i ballongen.
+	Det er viktig at det ikke kommer væske opp i ballongen siden væsken kan renne ned senere og dermed endre volumet og/eller kontaminere væsken som pipetteres. Hvis du skulle få væske opp i ballongen, si ifra til en veileder så den kan rengjøres. De vanligste måtene væske kommer opp i ballongen på er at man trykker for hardt på \emph{S}-ventilen eller at man holder pipettespissen nede i bunnen av begeret man suger væske opp fra. Da dekker bunnen fra hullet i pipetten inntil man løfter den og væsken skyter opp i ballongen.
 	
 	\paragraph{Rengjøring av pipette}
-	Før en pipette kan brukes, må den selvsagt være ren. For at pipetten skal være så ren som mulig, vaskes pipetten med løsningen som skal pipetteres. Dette gjøres ved å fylle pipetten til den er omtrent en tredel full. Pipetten holdes så over en vask og på skrå og roteres slik at væsken dekker hele veggen i pipetten, også litt over merket. Det kan være lurt å ta av ballongen mens man gjør dette så man ikke får væske opp i den.
+	Før en pipette kan brukes, må den selvsagt være ren. For at pipetten skal være så ren som mulig, vaskes pipetten med løsningen som skal pipetteres. Dette gjøres ved å fylle pipetten til den er omtrent en tredel full. Pipetten holdes så på skrå over en vask og roteres slik at væsken dekker hele veggen i pipetten, også litt over merket. Det kan være lurt å ta av ballongen mens man gjør dette så man ikke får væske opp i den.
 	
 	Når pipetten er ren, skal innsiden være dekken med en tynn væskefilm. Dersom det dannes dråper på veggen, er ikke pipetten ren.
 	
@@ -194,12 +190,15 @@ Volumetrisk nøyaktighet og presisjon}
 	
 	På pipetten står det vanligvis \emph{Ex + 15s}. Det betyr at pipetten er designet for å levere (ikke inneholde) det angitte volumet og at det tar \SI{15}{s} å levere volumet. Når du er klar til å slippe væsken ned i et beger holder du begeret på skrå og lar pipettespissen hvile mot veggen, og så kan man ta av ballongen så all væsken renner ut. Etter at all væsken tilsynelatende er levert, fortsette å holde pipetten mot veggen og tell til 15. 
 	
+	\paragraph{Målesylinder og målebeger}
+	Hell væske i begeret til bunnen av menisken er nærme merket for ønsket volum. Fyll opp resten eller ta ut overflødig væske med en pasteurpipette til bunnen av menisken er ved merket.
+	
 	\paragraph{Tillaging av løsninger}
 	Plasser et veieskip på vekten og tarer. Fyll veieskipet med en spatel til ønsket masse. Overfør kjemikaliet til en målekolbe. Fyll litt løsemiddel i målekolben med en trakt og rist forsiktig til alt er løst, men på at minst mulig kommer på veggen over merket. Fyll så opp til merket med resten av løsemiddelet. Igjen kan det være lurt å bruke en pasteurpipette når du nærmer deg merket, men i dette tilfellet kan du ikke ta ut løsning hvis du går over.
 	
-	Dersom du veier ut for mye av stoffet må du ikke ta det tilbake i beholderen siden det kan kontaminere resten av stoffet i beholderen. Bare kast det overflødige stoffet.
+	Dersom du veier ut for mye av stoffet må du ikke ta det tilbake i beholderen, ettersom dette kan kontaminere resten av stoffet i beholderen. Bare kast det overflødige stoffet.
 	
-	I det fleste tilfeller er det ikke så viktig hvor mye stoff du har, bare at du vet nøyaktig hvor mye du har. I litteraturen står det derfor ofte \emph{nøyaktig omtrent} som betyr vei ut omtrent så mye stoff som er oppgitt, men noter deg akkurat hvor mye det var.
+	I de fleste tilfeller er det ikke så viktig hvor mye stoff du har, bare at du vet nøyaktig hvor mye du har. I litteraturen står det derfor ofte \emph{nøyaktig omtrent} som betyr vei ut omtrent så mye stoff som er oppgitt, men noter deg akkurat hvor mye det var.
 	
 	\subsection{Oppgaver}
 	\begin{enumerate}[label=\alph*)]
@@ -290,11 +289,9 @@ Volumetrisk nøyaktighet og presisjon}
 	
 	Vurdere presisjon og nøyaktighet av data ved å tolke beregnet gjennomsnitt og standardavvik.
 	
-	\subsection{Teori og bakgrunn}
-	Det 
-	
-	
 	\subsection{Eksperimentelt}
+	
+	\subsubsection{Utstyr}
 	
 	\begin{table}[H]
 		\caption{Utstyr}
@@ -311,9 +308,10 @@ Volumetrisk nøyaktighet og presisjon}
 			natriumklorid & \\
 			ionebyttet vann & \\ \bottomrule 
 		\end{tabular}
+		\label{equipment}
 	\end{table}
 	
-	Noter hvilken vekt du benytter og toleransen dens. Du burde bruke samme vekt til alle målingene dine for at de skal være konsekvente.
+	I \cref{equipment} er nødvendig utstyr oppgitt.	Noter hvilken vekt du benytter og toleransen dens. Du burde bruke samme vekt til alle målingene dine for at de skal være konsekvente.
 	
 	\subsubsection{Kalibrering}
 	
