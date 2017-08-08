@@ -3,9 +3,24 @@
 
 % Technical
 \usepackage[T1]{fontenc}
+\usepackage{comment}
 
 % Layout
 \usepackage[table]{xcolor}
+\usepackage[textsize=scriptsize]{todonotes}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref}
+\crefformat{footnote}{#2\footnotemark[#1]#3}
+\usepackage{siunitx}
+\sisetup{output-decimal-marker = {,}}
+\sisetup{exponent-product=\cdot}
+\usepackage[norefs, nocites]{refcheck}
+
+% Tables
+\usepackage{booktabs}
+\usepackage{tabularx}
 
 % Typography
 \usepackage{microtype}
@@ -15,52 +30,29 @@
 \usepackage{isodate}
 %\usepackage{icomma}
 
-% Fonts
-
-\usepackage{tikz}
-\usetikzlibrary{calc}
-\usetikzlibrary{positioning}
-\usetikzlibrary{tikzmark}
-\usetikzlibrary{backgrounds}
+% Drawings
+%\usepackage{tikz}
+%\usetikzlibrary{calc}
+%\usetikzlibrary{positioning}
+%\usetikzlibrary{tikzmark}
+%\usetikzlibrary{backgrounds}
 %\newcommand{\mathtikzmark}[2]{\tikz[baseline={(#1.base)},remember picture] \node (#1) {\ensuremath{#2}};}
 
-\usepackage{comment}
-
-\usepackage{url}
-
-\usepackage{enumitem}
-
-\usepackage{hyperref}
-\usepackage[capitalise,noabbrev]{cleveref}
-\crefformat{footnote}{#2\footnotemark[#1]#3}
-
+% Figures
 %\usepackage{float}
 \usepackage{floatrow}
 \floatsetup[table]{capposition=top}
 
+% Code
 \usepackage{minted}    
 \floatsetup[listing]{style=Plaintop}
 \AtBeginEnvironment{listing}{\setcounter{listing}{\value{lstlisting}}}
 \AtEndEnvironment{listing}{\stepcounter{lstlisting}}
 
-
-\usepackage{siunitx}
-\sisetup{output-decimal-marker = {,}}
-\sisetup{exponent-product=\cdot}
-
+% Chemistry
 \usepackage{chemmacros}
 
-\usepackage{booktabs}
 
-
-
-
-\usepackage[textsize=scriptsize]{todonotes}
-
-\usepackage{tabularx}
-
-\usepackage{refcheck}
-\norefnames
 
 \title{Laboratorieoppgave 1:\\
 Volumetrisk nøyaktighet og presisjon}
@@ -74,11 +66,11 @@ Volumetrisk nøyaktighet og presisjon}
 	\section{Prelab}
 	
 	\subsection{Mål og hensikt}
-	Vite hvordan fullpipette, målesylinder og målebeger brukes på korrekt vis for å oppnå høy presisjon.
-	
-	Kunne beregne nødvendig masse for tillaging av løsninger med en bestemt konsentrasjon.
-	
-	Kunne vurdere presisjon og nøyaktighet av data ved å tolke beregnet gjennomsnitt og standardavvik.
+	\begin{itemize}
+		\item Vite hvordan fullpipette, målesylinder og målebeger brukes på korrekt vis for å oppnå høy presisjon.
+		\item Kunne beregne nødvendig masse for tillaging av løsninger med en bestemt konsentrasjon.
+		\item Kunne vurdere presisjon og nøyaktighet av data ved å tolke beregnet gjennomsnitt og standardavvik.
+	\end{itemize}
 	
 	\subsection{Statistikk}
 	
@@ -103,7 +95,11 @@ Volumetrisk nøyaktighet og presisjon}
 	\end{align*}
 	der det er rundet av til antall gjeldende siffer i siste linje.
 	
+	Når målinger ikke er lik den faktiske verdien snakker man om feil, og man skiller mellom systematiske og tilfeldige feil. 
+	
 	Systematiske feil er når en feil gjentas for hver måling. Denne typen feil fører til unøyaktige målinger. For eksempel kan en ukalibrert vekt konsekvent vise \SI{0.1}{g} for mye, og da blir også gjennomsnittet \SI{0.1}{g} for mye.
+	
+	Tilfeldige feil er når en måling svinger mellom flere verdier. For eksempel kan en vekt svinge mellom verdier fra \SI{3.7}{g} til \SI{3.8}{g}. Denne typen feil påvirker ikke nøyaktigheten og gjennomsnittet.
 	
 	\begin{comment}
 		\tikzstyle{every picture}+=[remember picture]
@@ -139,9 +135,7 @@ Volumetrisk nøyaktighet og presisjon}
 	\end{comment}
 	
 	\paragraph{Presisjon}
-	Presisjon er et mål på spredningen til målte verdier. Dersom standardavviket til målingene er lite, er resultatet presist.
-	
-	Tilfeldige feil fører til upresise målinger. Et eksempel på tilfeldige feil er et pH-meter som vipper mellom \num{5.2} og \num{5.5} mens den står i en løsning.
+	Presisjon er et mål på spredningen til målte verdier. Størrelsene varians og standardavvik forteller hvor presise målinger er. Altså vil målinger med høy varians eller høyt standardavvik ha stor spredning og være upresise.
 	
 	Variansen $s^2$ til $n$ målinger $x_1, x_2, \ldots, x_n$ er gitt ved
 	\begin{align*}
@@ -162,6 +156,10 @@ Volumetrisk nøyaktighet og presisjon}
 	
 	Standardavviket blir $s=\sqrt{\SI{0.01536}{g^2}}\approx\SI{0.12}{g}$. Vanligvis velger man å oppgi standardavvik med ett eller to signifikante siffer. Gjennomsnittet var \SI{2.94}{g} og med usikkerhet oppgir man det som \SI{2.94 +- 0.12}{g} eller \SI[separate-uncertainty=true]{2.94 +- 0.12}{g}. Legg merke til at dette er en større usikkerhet en det gjeldende siffer viser i dette tilfellet så gjeldende siffer viser tilsynelatende bedre presisjon.
 	
+	Mens nøyaktigheten påvirkes av systematiske feil er presisjonen upåvirket. Tilsvarende påvirker tilfeldige feil presisjonen mens nøyaktigheten er upåvirket.
+	
+	Varians og standardavvik er helt analoge størrelser og forteller akkurat det samme. Man velger gjerne å oppgi presisjonen med standardavvik i stedet for varians fordi den har samme enhet som målingene. Varians brukes likevel i mange formler i statistikk fordi formlene blir mye enklere.
+	
 	\paragraph{Relativ presisjon}
 	Det er ofte lite hensiktsmessig og sammenligne standardavvik for målinger med veldig forskjellig gjennomsnitt. Tenk deg at en kjemiker trenger \SI{1000}{g} reaktant og \SI{1}{g} katalysator til en reaksjon. Hvis standardavviket for begge oppmålingene er \SI{1}{g} er variasjonen relativt større for katalysatoren enn reaktanten. Derfor bruker man noen ganger relativt standardavviket $c_\mathrm{v}$ gitt ved
 	\begin{equation*}
@@ -171,29 +169,31 @@ Volumetrisk nøyaktighet og presisjon}
 		
 	\subsection{Praktiske teknikker}
 	
-	\paragraph{Peleusballong}
+	\subsubsection{Peleusballong}
 	Peleusballongen har tre ventiler merket \emph{A}, \emph{S} og \emph{E} som står henholdsvis for \emph{air}, \emph{suck} og \emph{empty}. Når en ventil klemmes, åpnes den slik at luft kan strømme gjennom. Tenk gjennom hvordan luften kan strømme i ballongen når de forskjellige ventilene åpnes. Husk å sette ballongen \emph{forsiktig} på pipetten så den ikke brekker.
 	
-	For å suge væske opp i pipetten må luften i ballongen ut først. Dette gjøres ved å åpne \emph{A} og klemme ballongen. Nå kan væske suges opp i pipetten ved å åpne \emph{S} forsiktig. Hvis ballongen fylles helt må luft, er det ikke noe sug lenger. Da må ballongen tømmes igjen ved å åpne \emph{A} igjen.
+	\paragraph{Suge opp væske}
+	For å suge væske opp i pipetten må du først klemme ut luften i ballongen. Dette gjøres ved å åpne \emph{A} og klemme ballongen. Nå kan væske suges opp i pipetten ved å åpne \emph{S} forsiktig. Hvis ballongen fylles helt med luft, er det ikke noe sug lenger. Da må ballongen tømmes igjen ved å åpne \emph{A} igjen og klemme ut luften.
 	
-	For å slippe væske ut av pipetten åpnes ventil \emph{E}. Dersom all væsken i pipetten skal slippes ut, er det ofte enklest å bare ta av ballongen.
+	\paragraph{Slippe ut væske}
+	For å slippe væske ut av pipetten åpnes ventil \emph{E}. Dersom all væsken i pipetten skal slippes ut, er det ofte enklest å bare ta av ballongen.\\[\parskip]
 	
-	Det er viktig at det ikke kommer væske opp i ballongen siden væsken kan renne ned senere og dermed endre volumet og/eller kontaminere væsken som pipetteres. Hvis du skulle få væske opp i ballongen, si ifra til en veileder så den kan rengjøres. De vanligste måtene væske kommer opp i ballongen på er at man trykker for hardt på \emph{S}-ventilen eller at man holder pipettespissen nede i bunnen av begeret man suger væske opp fra. Da dekker bunnen fra hullet i pipetten inntil man løfter den og væsken skyter opp i ballongen.
+	\noindent\emph{Det er viktig at det ikke kommer væske opp i ballongen} siden væsken kan renne ned senere og dermed endre volumet og/eller kontaminere (dvs. forurense) væsken som pipetteres. Hvis du skulle få væske opp i ballongen, si fra til en veileder så den kan rengjøres. De vanligste måtene væske kommer opp i ballongen på er at man trykker for hardt på \emph{S}-ventilen eller at man holder pipettespissen nede i bunnen av begeret man suger væske opp fra. Da dekker bunnen fra hullet i pipetten inntil man løfter den og væsken skyter opp i ballongen.
 	
-	\paragraph{Rengjøring av pipette}
+	\subsubsection{Rengjøring av pipette}
 	Før en pipette kan brukes, må den selvsagt være ren. For at pipetten skal være så ren som mulig, vaskes pipetten med løsningen som skal pipetteres. Dette gjøres ved å fylle pipetten til den er omtrent en tredel full. Pipetten holdes så på skrå over en vask og roteres slik at væsken dekker hele veggen i pipetten, også litt over merket. Det kan være lurt å ta av ballongen mens man gjør dette så man ikke får væske opp i den.
 	
 	Når pipetten er ren, skal innsiden være dekken med en tynn væskefilm. Dersom det dannes dråper på veggen, er ikke pipetten ren.
 	
-	\paragraph{Pipettering}
+	\subsubsection{Pipettering}
 	Sug væsken opp i pipetten til litt over merket. Løft pipetten ut av løsningen, og tørk spissen med lofritt papir så det ikke henger noe væske på utsiden. Hold et beger på skrå og la pipettespissen hvile mot veggen mens du tapper væsken ned inntil bunnen av menisken når merket. Dette sørger for at det ikke henger en dråpe på spissen. Hvis du går forbi merket, må du starte på nytt.
 	
 	På pipetten står det vanligvis \emph{Ex + 15s}. Det betyr at pipetten er designet for å levere (ikke inneholde) det angitte volumet og at det tar \SI{15}{s} å levere volumet. Når du er klar til å slippe væsken ned i et beger holder du begeret på skrå og lar pipettespissen hvile mot veggen, og så kan man ta av ballongen så all væsken renner ut. Etter at all væsken tilsynelatende er levert, fortsette å holde pipetten mot veggen og tell til 15. 
 	
-	\paragraph{Målesylinder og målebeger}
-	Hell væske i begeret til bunnen av menisken er nærme merket for ønsket volum. Fyll opp resten eller ta ut overflødig væske med en pasteurpipette til bunnen av menisken er ved merket.
+	\subsubsection{Målesylinder og målebeger}
+	Hell væske i begeret til bunnen av menisken er nær merket for ønsket volum. Fyll opp resten eller ta ut overflødig væske med en pasteurpipette til bunnen av menisken er ved merket.
 	
-	\paragraph{Tillaging av løsninger}
+	\subsubsection{Tillaging av løsninger}
 	Plasser et veieskip på vekten og tarer. Fyll veieskipet med en spatel til ønsket masse. Overfør kjemikaliet til en målekolbe. Fyll litt løsemiddel i målekolben med en trakt og rist forsiktig til alt er løst, men på at minst mulig kommer på veggen over merket. Fyll så opp til merket med resten av løsemiddelet. Igjen kan det være lurt å bruke en pasteurpipette når du nærmer deg merket, men i dette tilfellet kan du ikke ta ut løsning hvis du går over.
 	
 	Dersom du veier ut for mye av stoffet må du ikke ta det tilbake i beholderen, ettersom dette kan kontaminere resten av stoffet i beholderen. Bare kast det overflødige stoffet.
@@ -208,9 +208,9 @@ Volumetrisk nøyaktighet og presisjon}
 		
 		\item Hvorfor må hvert forsøk gjentas flere ganger?
 		
-		\item \cref{observed_pip} viser observert masse i en \SI{10}{mL}-pipette. Fyll ut de tomme, skraverte cellene i tabellen. Du trenger å bruke \cref{density}. \label{real} \todo{Er dette en god kilde? Det er en matematisk modell (greit nok), men journalen virker tvilsom. F.eks. står det nacl (ikke NaCl) i tittelen...}
+		\item \cref{observed_pip} viser observert masse i en \SI{10}{mL}-pipette fylt med vann. Fyll ut de tomme, skraverte cellene i tabellen. Du trenger å bruke \cref{density}. \label{real} \todo{Er dette en god kilde? Det er en matematisk modell (greit nok), men journalen virker tvilsom. F.eks. står det nacl (ikke NaCl) i tittelen...}
 		
-		\item Hva er det reelle volumet med usikkerhet i \ref{real}?
+		\item Hva er det reelle volumet oppgitt med usikkerhet i \ref{real}?
 		
 		\item \cref{observed_salt} viser observert masse i en \SI{10}{mL}-pipette fylt med \SI{1.000}{M} \ch{NaCl}-løsning. Fyll ut de tomme, skraverte cellene i tabellen for tettheten til saltløsningen. \label{real_salt} 
 		
@@ -244,7 +244,7 @@ Volumetrisk nøyaktighet og presisjon}
 		\end{tabular}
 	\end{table}
 	
-	\begin{table}[p]
+	\begin{table}[h]
 		\caption{Observert masse av vann i \SI{10}{mL}-pipette.}
 		\label{observed_pip}
 		\begin{tabular}{rSp{4cm}Sp{4cm}}
@@ -261,7 +261,7 @@ Volumetrisk nøyaktighet og presisjon}
 		\end{tabular}
 	\end{table}
 
-	\begin{table}[p]
+	\begin{table}[h]
 		\caption{Observert masse av \SI{1.000}{M} \ch{NaCl}-løsning i \SI{10}{mL}-pipette.}
 		\label{observed_salt}
 		\begin{tabular}{rSS|p{4cm}}
@@ -285,9 +285,11 @@ Volumetrisk nøyaktighet og presisjon}
 	\section{Labøvelse}
 	
 	\subsection{Mål og hensikt}
-	Bestemme det eksakte volumet til en fullpipette, en målesylinder og et målebeger, og få praktisk erfaring for korrekt bruk å volumetrisk utstyr som er viktig for senere labøvelser.
-	
-	Vurdere presisjon og nøyaktighet av data ved å tolke beregnet gjennomsnitt og standardavvik.
+	\begin{itemize}
+		\item Bestemme det eksakte volumet til en fullpipette, en målesylinder og et målebeger, og få praktisk erfaring for korrekt bruk å volumetrisk utstyr som er viktig for senere labøvelser.
+		
+		\item Vurdere presisjon og nøyaktighet av data ved å tolke beregnet gjennomsnitt og standardavvik.
+	\end{itemize}
 	
 	\subsection{Eksperimentelt}
 	
