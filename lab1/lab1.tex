@@ -1,58 +1,7 @@
+% !TeX encoding = UTF-8
 % !TeX spellcheck = nb_NO
-\documentclass[hidelinks,12pt,norsk,a4paper,fleqn]{scrartcl}
 
-% Technical
-\usepackage[T1]{fontenc}
-\usepackage{comment}
-
-% Layout
-\usepackage[table]{xcolor}
-\usepackage[textsize=scriptsize]{todonotes}
-\usepackage{enumitem}
-\usepackage{url}
-\usepackage{hyperref}
-\usepackage[capitalise,noabbrev]{cleveref}
-\crefformat{footnote}{#2\footnotemark[#1]#3}
-\usepackage{siunitx}
-\sisetup{output-decimal-marker = {,}}
-\sisetup{exponent-product=\cdot}
-\usepackage[norefs, nocites]{refcheck}
-
-% Tables
-\usepackage{booktabs}
-\usepackage{tabularx}
-
-% Typography
-\usepackage{microtype}
-
-% Localization
-\usepackage{babel}
-\usepackage{isodate}
-%\usepackage{icomma}
-
-% Drawings
-%\usepackage{tikz}
-%\usetikzlibrary{calc}
-%\usetikzlibrary{positioning}
-%\usetikzlibrary{tikzmark}
-%\usetikzlibrary{backgrounds}
-%\newcommand{\mathtikzmark}[2]{\tikz[baseline={(#1.base)},remember picture] \node (#1) {\ensuremath{#2}};}
-
-% Figures
-%\usepackage{float}
-\usepackage{floatrow}
-\floatsetup[table]{capposition=top}
-
-% Code
-\usepackage{minted}    
-\floatsetup[listing]{style=Plaintop}
-\AtBeginEnvironment{listing}{\setcounter{listing}{\value{lstlisting}}}
-\AtEndEnvironment{listing}{\stepcounter{lstlisting}}
-
-% Chemistry
-\usepackage{chemmacros}
-
-
+\input{../preamble}
 
 \title{Laboratorieoppgave 1:\\
 Volumetrisk nøyaktighet og presisjon}
@@ -68,7 +17,9 @@ Volumetrisk nøyaktighet og presisjon}
 	\subsection{Mål og hensikt}
 	\begin{itemize}
 		\item Vite hvordan fullpipette, målesylinder og målebeger brukes på korrekt vis for å oppnå høy presisjon.
+		
 		\item Kunne beregne nødvendig masse for tillaging av løsninger med en bestemt konsentrasjon.
+		
 		\item Kunne vurdere presisjon og nøyaktighet av data ved å tolke beregnet gjennomsnitt og standardavvik.
 	\end{itemize}
 	
@@ -88,7 +39,7 @@ Volumetrisk nøyaktighet og presisjon}
 	For eksempel ble en reaksjon utført fire ganger og massen av produktet i reaksjonen ble målt til $x_1=\SI{2.94}{g}$, $x_2=\SI{3.10}{g}$, $x_3=\SI{2.80}{g}$ og $x_4=\SI{2.91}{g}$. Da er $n=4$ og gjennomsnittet er
 	\begin{align*}
 		\bar{x} &= \frac{1}{n}\sum_{i=1}^{n}x_i\\
-		&=\frac{1}{n}\left(x_1 + x_2 + \dots + x_n\right)\\
+		&=\frac{1}{4}\left(x_1 + x_2 + x_3 + x_4\right)\\
 		&=\frac{1}{4}\left(\SI{2.94}{g} + \SI{3.10}{g} + \SI{2.80}{g} + \SI{2.91}{g}\right)\\
 		&=\SI{2.9375}{g}\\
 		&\approx\SI{2.94}{g}
@@ -147,7 +98,7 @@ Volumetrisk nøyaktighet og presisjon}
 	For de samme verdiene i eksempelet for gjennomsnitt blir variansen
 	\begin{align*}
 		s^2 &= \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2 \\
-		&=\frac{1}{n-1}\left[(x_1-\bar{x})^2 + (x_2-\bar{x})^2 + \dots + (x_n-\bar{x})^2\right]\\
+		&=\frac{1}{4-1}\left[(x_1-\bar{x})^2 + (x_2-\bar{x})^2 + (x_3-\bar{x})^2 + (x_4-\bar{x})^2\right]\\
 		&=\frac{1}{4-1}\left[(\SI{2.94}{g}-\SI{2.94}{g})^2 + ( \SI{3.10}{g}-\SI{2.94}{g})^2\right. + \\
 		&\phantom{=\frac{1}{4-1}\left[\right.}\left.  (\SI{2.80}{g}-\SI{2.94}{g})^2 + (\SI{2.91}{g}-\SI{2.94}{g})^2\right]\\
 		&\approx \SI{0.01536}{g^2}
@@ -186,16 +137,32 @@ Volumetrisk nøyaktighet og presisjon}
 	Når pipetten er ren, skal innsiden være dekken med en tynn væskefilm. Dersom det dannes dråper på veggen, er ikke pipetten ren.
 	
 	\subsubsection{Pipettering}
-	Sug væsken opp i pipetten til litt over merket. Løft pipetten ut av løsningen, og tørk spissen med lofritt papir så det ikke henger noe væske på utsiden. Hold et beger på skrå og la pipettespissen hvile mot veggen mens du tapper væsken ned inntil bunnen av menisken når merket. Dette sørger for at det ikke henger en dråpe på spissen. Hvis du går forbi merket, må du starte på nytt.
-	
-	På pipetten står det vanligvis \emph{Ex + 15s}. Det betyr at pipetten er designet for å levere (ikke inneholde) det angitte volumet og at det tar \SI{15}{s} å levere volumet. Når du er klar til å slippe væsken ned i et beger holder du begeret på skrå og lar pipettespissen hvile mot veggen, og så kan man ta av ballongen så all væsken renner ut. Etter at all væsken tilsynelatende er levert, fortsette å holde pipetten mot veggen og tell til 15. 
+	\begin{itemize}
+		\item Sug væsken opp i pipetten til litt over merket. 
+		
+		\item Løft pipetten ut av løsningen, og tørk spissen med lofritt papir så det ikke henger noe væske på utsiden.
+		
+		\item Hold et beger på skrå og la pipettespissen hvile mot veggen mens du tapper væsken ned inntil bunnen av menisken når merket. Dette sørger for at det ikke henger en dråpe på spissen. Hvis du går forbi merket, må du starte på nytt.
+		
+		\item Når du er klar til å slippe væsken ned i et beger holder du begeret på skrå og lar pipettespissen hvile mot veggen, og så kan man ta av ballongen så all væsken renner ut. Etter at all væsken tilsynelatende er levert, fortsette å holde pipetten mot veggen og tell til 15. 
+	\end{itemize}
+
+	På pipetten står det vanligvis \emph{Ex + 15s}. Det betyr at pipetten er designet for å levere, \emph{ikke inneholde}, det angitte volumet og at det tar \SI{15}{s} å levere volumet. 
 	
 	\subsubsection{Målesylinder og målebeger}
 	Hell væske i begeret til bunnen av menisken er nær merket for ønsket volum. Fyll opp resten eller ta ut overflødig væske med en pasteurpipette til bunnen av menisken er ved merket.
 	
 	\subsubsection{Tillaging av løsninger}
-	Plasser et veieskip på vekten og tarer. Fyll veieskipet med en spatel til ønsket masse. Overfør kjemikaliet til en målekolbe. Fyll litt løsemiddel i målekolben med en trakt og rist forsiktig til alt er løst, men på at minst mulig kommer på veggen over merket. Fyll så opp til merket med resten av løsemiddelet. Igjen kan det være lurt å bruke en pasteurpipette når du nærmer deg merket, men i dette tilfellet kan du ikke ta ut løsning hvis du går over.
-	
+	\begin{itemize}
+		\item Plasser et veieskip på vekten og tarer (dvs. nullstille vekten). 
+		
+		\item Fyll veieskipet med en spatel til ønsket masse og overfør kjemikaliet til en målekolbe. 
+		
+		\item Fyll litt løsemiddel i målekolben med en trakt og rist forsiktig til alt er løst, men pass på at minst mulig kommer på veggen over merket. 
+		
+		\item Fyll opp til merket med resten av løsemiddelet. Igjen kan det være lurt å bruke en pasteurpipette når du nærmer deg merket, men i dette tilfellet kan du ikke ta ut løsning hvis du går over.
+	\end{itemize}
+
 	Dersom du veier ut for mye av stoffet må du ikke ta det tilbake i beholderen, ettersom dette kan kontaminere resten av stoffet i beholderen. Bare kast det overflødige stoffet.
 	
 	I de fleste tilfeller er det ikke så viktig hvor mye stoff du har, bare at du vet nøyaktig hvor mye du har. I litteraturen står det derfor ofte \emph{nøyaktig omtrent} som betyr vei ut omtrent så mye stoff som er oppgitt, men noter deg akkurat hvor mye det var.
@@ -222,7 +189,6 @@ Volumetrisk nøyaktighet og presisjon}
 
 	\begin{table}[h]
 		\caption{Tetthet til vann og \ch{NaCl}-løsninger ved utvalgte temperaturer \cite{Gavrila2015}.}
-		\label{density}
 		\begin{tabular}{
 				S[table-number-alignment=left]
 				S[table-number-alignment=left]
@@ -242,6 +208,7 @@ Volumetrisk nøyaktighet og presisjon}
 			24 & 0.99733 & 1,0370 & 1,1128 \\
 			25 & 0.99708 & 1,0367 & 1,1124 \\ \bottomrule 
 		\end{tabular}
+		\label{density}
 	\end{table}
 	
 	\begin{table}[h]
@@ -288,6 +255,8 @@ Volumetrisk nøyaktighet og presisjon}
 	\begin{itemize}
 		\item Bestemme det eksakte volumet til en fullpipette, en målesylinder og et målebeger, og få praktisk erfaring for korrekt bruk å volumetrisk utstyr som er viktig for senere labøvelser.
 		
+		\item Lage en løsning med en bestemt konsentrasjon.
+		
 		\item Vurdere presisjon og nøyaktighet av data ved å tolke beregnet gjennomsnitt og standardavvik.
 	\end{itemize}
 	
@@ -319,44 +288,19 @@ Volumetrisk nøyaktighet og presisjon}
 	
 	Denne delen skal gjentas fem ganger hver for pipetten, målesylinderen og målebegeret. 
 	
-	Noter temeraturen til vannet du bruker. 
+	Noter temperaturen til vannet du bruker. 
 	
 	\paragraph{Kalibrering av pipette}
-	Vei et rent beger glass. Pipetter vann over i begerglasset og vei på nytt.
+	Vei et rent begerglass. Pipetter vann over i begerglasset og vei på nytt.
 	
 	\paragraph{Kalibrering av målesylinder og målebeger}
-	Vei det rene målesylinderen/målebegeret. Fyll vann til merket og vei på nytt.
+	Vei en ren målesylinder/målebeger. Fyll vann til merket og vei på nytt.
 	
 	\subsubsection{Tetthet til saltløsning}
 	Lag en \SI{3.000}{M} \ch{NaCl}-løsning i en \SI{250.0}{mL} målekolbe. Se oppgave \ref{exercise} i prelabben for hvor mye salt du trenger. 
 	
 	Vei et rent begerglass. Bruk den kalibrerte pipetten og pipetter \SI{25}{mL} av saltløsningen over i begerglasset og vei på nytt. Gjenta dette fem ganger.
 	
-	\section{Rapport}
-	Øverst på rapporten skal det stå:
-	\begin{itemize}
-		\item Dato for gjennomføring av labøvelsen.
-		\item Navn og plassnummer på laboratoriet.
-		\item Navn på labpartner.
-		\item Gruppenummer.
-		\item Gruppelærer.
-	\end{itemize}
-
-	Rapporten skal inneholde:
-	\paragraph{Hensikt}
-	Forklar \emph{kort} hensikten og målet med øvelsen med dine egne ord.
-	
-	\paragraph{Eksperimentelt}
-	Forklar \emph{kort} den eksperimentelle delen med egne ord.
-	
-	\paragraph{Resultater}
-	Oppsummer målingene dine i tabeller.
-	
-	Beregn gjennomsnitt, standardavvik og relativt standardavvik for pipetten, målesylinderen og målebegeret.
-	
-	\paragraph{Diskusjon}
-	Vurder resultatene dine. Hvordan sammenligner nøyaktigheten og presisjonen til det forskjellige utstyret? Stemmer det overens med forventningene?
-	
-	Var det avvik fra prosedyren? Gikk noe galt under forsøket?
+	\input{../report}
 	
 \end{document}
