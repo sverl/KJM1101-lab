@@ -1,96 +1,13 @@
-% type dokument. Her kan globale preferanser for skriftstørrelse, arkformat osv. presiseres
-\documentclass[12pt, a4]{article}
+% !TeX encoding = UTF-8 
+% !TeX spellcheck = nb_NO 
 
-% "Alt norsk"
-\usepackage[utf8]{inputenc}
-\usepackage[norsk]{babel}
-
-% Matte og ligninger
-\usepackage{amsmath, amsfonts, amssymb, amsthm, amscd}
-
-% bilder
-\usepackage{graphicx}
-\usepackage{subfig}
-
-% Ymse kjekt å ha
-\usepackage{listings}
-\usepackage{pdflscape}
-\usepackage{hyperref}
-\usepackage{geometry}
-\usepackage[usenames, dvipsnames]{color}
-\usepackage{fancyhdr}
-\usepackage{float}
-\usepackage{url}
-\usepackage{verbatim}
-\usepackage{enumerate}
-\usepackage{units}
-
-% Kjemi! Eksempel: \ce{H2SO3 + H2O <=> H2SO3- + H3O+}
-\usepackage[version=3]{mhchem}
-
-% Pene tabeller
-\usepackage{booktabs}
-
-% Warning: Rabbit hole, stay clear!
-\usepackage{tikz}
-\usetikzlibrary{matrix,arrows}
-\usepackage{multirow}
-
-%% ========================================================================== %%
-%% Macros
-%% ========================================================================== %%
-\newcommand{\degree}{\ensuremath{^\circ}}
-\newcommand{\fixme}[1]{\textbf{{\color{red} \textsc{FIXME:} #1 }}}
-\newcommand{\pH}{\ensuremath{pH}}
-
-% Matte og kvantemekk. Lar de stå som eksempel.
-\newcommand{\nparens}[1]{\left(#1\right)}
-\newcommand{\bparens}[1]{\left[#1\right]}
-\newcommand{\rparens}[1]{\langle#1\rangle}
-\newcommand{\lparens}[1]{\left|#1\right|}
-\newcommand{\cparens}[1]{\left\{#1\right\}}
-\newcommand{\partiali}[2]{\frac{\partial#1}{\partial #2}}
-\newcommand{\partialii}[2]{\frac{\partial^2#1}{\partial #2^2}}
-\newcommand{\partialij}[3]{\frac{\partial^2#1}{\partial #2 \partial #3}}
-\newcommand{\myvec}[1]{\boldsymbol{#1}}
-\newcommand{\myvecII}[1]{\vec{#1}}
-\newcommand{\bra}[1]{\left\langle#1\right|}
-\newcommand{\ket}[1]{\left|#1\right\rangle}
-\newcommand{\braket}[2]{\left\langle#1\;\vline\;#2\right\rangle}
-\newcommand{\expectation}[3]{\left\langle#1\;\vline\;#2\;\vline\;#3\right\rangle}
-\newcommand{\twoint}[2]{\left\langle#1\;\vline\;\vline\;#2\right\rangle}
-\newcommand{\cbraket}[2]{\left(#1\;\vline\;#2\right)}
-\newcommand{\CR}[1]{\ensuremath{\hat{a}^\dagger_{#1}}}
-\newcommand{\AN}[1]{\ensuremath{\hat{a}_{#1}}}
-\newcommand{\bCR}[1]{\ensuremath{\hat{b}^\dagger_{#1}}}
-\newcommand{\bAN}[1]{\ensuremath{\hat{b}_{#1}}}
-\renewcommand{\H}{\ensuremath{\hat{H}}}
-\newcommand{\pert}[1]{\ensuremath{^{(#1)}}}
-\newcommand{\cmark}{\color{ForestGreen}\boldsymbol{\checkmark}}%
-\newcommand{\xmark}{\color{red}\textbf{X}}%
-\allowdisplaybreaks[1] % displaybreak in math is allowed but avoided
-
-
-
-%% ========================================================================== %%
-%% Tittel, forfatter og dato
-%% ========================================================================== %%
-\title{Laboratorieoppgave 2:\\ Ideelle gasser og den molare massen til magnesium}
-\author{Karoline Fægri}
-\date{\today}
-
-
-
-%% ========================================================================== %%
-%% Endelig, dokumentet!
-%% ========================================================================== %%
-
+\input{../preamble} 
 
 \title{Laboratorieoppgave 2:\\
 	Ideelle gasser og den \\
 	molare massen til magnesium}
 \author{Sverre Løyland og Karoline Fægri}
-\date{22.09.2017}
+\date{}
 
 \begin{document}
 	
@@ -111,10 +28,7 @@
 	\begin{itemize}
 		\item Kapittel 5.1-5.5 i læreboken
 		
-		\item Gjennomføringen av laboratorieforsøket vises i filmen Oppgave 1A - magnesium, som du finner på:
-		
-		http://www.uio.no/studier/emner/matnat/kjemi/KJM1100/h13/podcast
-		
+		\item Gjennomføringen av laboratorieforsøket vises i filmen Oppgave 1A - magnesium, som du finner på \\ \url{http://www.uio.no/studier/emner/matnat/kjemi/KJM1100/h13/podcast}. \\
 		Se denne før du går på lab'en.
 	\end{itemize}
 	
@@ -124,7 +38,7 @@
 	
 	Jo flere målinger vi gjør, dess mer representativt er gjennomsnittet vårt for det sanne gjennomsnittet, og jo mindre spredningen i målingene er, desto mer sannsynlig er det at gjennomsnittet ligger nær den "sanne" verdien. Standardfeilen er med andre ord avhengig både av antall målinger og spredningen i målingene, og uttrykkes som 
 	\begin{equation}
-	SE =\frac{s}{\sqrt{n}}
+		SE =\frac{s}{\sqrt{n}}
 	\end{equation}
 	
 	Det er vanlig å oppgi gjennomsnittet med usikkerhet uttrykt som standardfeil, altså $\bar{x}\pm SE$.
@@ -137,7 +51,7 @@
 	\paragraph{Reaksjonen}
 	Mange metaller reagerer med syrer. For eksempel vil sink og saltsyre reagere og danne hydrogengass etter reaksjonslikningen
 	\begin{equation*}
-	\ce{Zn (s) + 2 HCl (aq) -> ZnCl2 (aq) + H2 (g)}    
+		\ch{Zn (s) + 2 HCl (aq) -> ZnCl2 (aq) + H2 (g)}    
 	\end{equation*}
 	
 	Hvis en kjent masse av metallet reagerer fullstendig med syren og man samler opp hydrogengassen som dannes, kan man bruke gassvolumet til å finne stoffmengden hydrogengass (se neste avsnitt), og ved hjelp av reaksjonsligningen beregne stoffmengden (antall mol) av metallet. Da kan man bestemme den molare massen $M$ til metallet ved likningen
@@ -180,7 +94,7 @@
 		\label{vap}
 		\begin{tabular}{rr}
 			\toprule
-			$\Theta/\text{\degree C}$ & $P/\text{atm}$ \\
+			$\Theta/\si{\degreeCelsius}$ & $P/\text{atm}$ \\
 			\midrule
 			16.0 & 0.01793 \\
 			18.0 & 0.02036 \\
@@ -194,28 +108,28 @@
 	\end{table}
 	
 	\subsection{Oppgaver}
-	\begin{enumerate}[(a)]
+	\begin{enumerate}
 		\item Hvilke antagelser brukes i den ideelle gasslikningen.
 		\item Utled ligning \eqref{eq:rgh} ved å anta at søylen har tverrsnitt $A$ og høyde $h$. Bruk at trykket er gitt ved $P=F/A$ der $F$ er tyngdekraften til vannet.	
 		\item Utled ligning  \eqref{eq:inter} ved å finne stigningen mellom punktene $(x_i, y_i)$ og $(x_{i+1}, y_{i+1})$ og for eksempel bruke ettpunktsformelen. Du kan lese om ettpunktsformelen på
 		
 		https://www.matematikk.org/oss.html?tid=89173
-		\item I et førsøk skulle den molare massen til sink bestemmes. \unit[0.090]{g} sink ble veid ut og tilsatt saltsyre. Reaksjonen produserte hydrogengass, som ble samlet opp i et målerør.
-		\begin{enumerate}[I)]
-			\item Høyden av vannet i målerøret ble målt til \unit[135.0]{mm}. Regn ut trykket av vannet $P_w$.
-			\item Temperaturen i rommet ble målt til \unit[23.2]{\degree}. Beregn vannets damptrykk $P_\mathrm{vap}$ inne i målerøret.
-			\item Barometertrykket $P_0$ (dvs. det ytre trykket) ble målt til $P_0=\unit[1.013]{atm}$. Beregn trykket til hydrogengassen inni målesylinderen. Bruk at summen av trykkene utenfor og inni målesylinderen må være det samme.
+		\item I et førsøk skulle den molare massen til sink bestemmes. \SI{0.090}{g} sink ble veid ut og tilsatt saltsyre. Reaksjonen produserte hydrogengass, som ble samlet opp i et målerør.
+		\begin{enumerate}
+			\item Høyden av vannet i målerøret ble målt til \SI{135.0}{mm}. Regn ut trykket av vannet $P_w$.
+			\item Temperaturen i rommet ble målt til \SI{23.2}{\degreeCelsius}. Beregn vannets damptrykk $P_\mathrm{vap}$ inne i målerøret.
+			\item Barometertrykket $P_0$ (dvs. det ytre trykket) ble målt til $P_0=\SI{1.013}{atm}$. Beregn trykket til hydrogengassen inni målesylinderen. Bruk at summen av trykkene utenfor og inni målesylinderen må være det samme.
 			\item Avlest volum hydrogengass i forsøket var 34,77 mL. Regn ut stoffmengden hydrogengass.
 			\item Regn ut den molare massen til sink.
-			\item \unit[10]{mL} \unit[6]{M} saltsyre ble brukt. Var det tilstrekkelig med syre?
+			\item \SI{10}{mL} \SI{6}{M} saltsyre ble brukt. Var det tilstrekkelig med syre?
 		\end{enumerate}
-		\item Et annet forsøk for å bestemme molarmassen til sink ble utført fem ganger og replikatene ga molarmassene \unit[65,40]{g/mol}, \unit[66,56]{g/mol}, \unit[65,60]{g/mol}, \unit[64,94]{g/mol} og \unit[65,19]{g/mol}.
-		\begin{enumerate}[I)]
+		\item Et annet forsøk for å bestemme molarmassen til sink ble utført fem ganger og replikatene ga molarmassene \SI{65,40}{g/mol}, \SI{66,56}{g/mol}, \SI{65,60}{g/mol}, \SI{64,94}{g/mol} og \SI{65,19}{g/mol}.
+		\begin{enumerate}
 			\item Beregn den gjennomsnittlige molare massen.
 			\item Beregn standardavviket for den molare massen.
 			\item Beregn det relative standardavviket for den molare massen.
 			\item Beregn standardfeielen for den molare massen.
-			\item Oppgi den molare massen til sink med usikkerhet i form av standardfeil. Hvordan stemmer resultatet med den offisielle molare massen til sink, som er \unit[65,38]{g/mol}.
+			\item Oppgi den molare massen til sink med usikkerhet i form av standardfeil. Hvordan stemmer resultatet med den offisielle molare massen til sink, som er \SI{65.38}{g/mol}.
 		\end{enumerate}
 	\end{enumerate}
 	
@@ -232,7 +146,7 @@
 	\subsection{Eksperimentelt}
 	
 	\subsubsection{Sikkerhet}
-	\unit[6]{M} HCl (saltsyre) er etsende. Bruk vernebriller og labfrakk under hele forsøket.
+	\SI{6}{M} \ch{HCl} (saltsyre) er etsende. Bruk vernebriller og labfrakk under hele forsøket.
 	
 	VED KONTAKT MED ØYNENE: Skyll forsiktig med vann i flere minutter. Fjern eventuelle kontaktlinser dersom dette enkelt lar seg gjøre. Fortsett skyllingen.
 	
@@ -248,13 +162,13 @@
 		\begin{tabular}{ll}
 			\toprule
 			magnesiumbånd & \\ 
-			saltsyre & (\unit[6]{M}) \\
+			saltsyre & (\SI{6}{M}) \\
 			smergelpapir & \\
 			målerør & \\
 			slangebit & \\
 			hansker & \\
 			spruteflaske & (ionebyttet vann) \\
-			begerglass & (\unit[150]{mL}) \\
+			begerglass & (\SI{150}{mL}) \\
 			kobbertråd & \\
 			avbitertang & \\ 
 			stativ med klemme & \\ 
@@ -276,15 +190,15 @@
 		\begin{itemize}
 			\item Vikle den ene enden av kobbertråden rundt magnesiumbiten. 
 			
-			\item Hell ca. \unit[10]{mL} \unit[6]{M} saltsyre i målerøret. Fyll resten av røret forsiktig med ionebyttet vann slik at den tyngre saltsyren ligger i bunn med vannet oppå.
+			\item Hell ca. \SI{10}{mL} \SI{6}{M} saltsyre i målerøret. Fyll resten av røret forsiktig med ionebyttet vann slik at den tyngre saltsyren ligger i bunn med vannet oppå.
 			
-			\item Heng magnesiumbiten med kobbertråden ca. \unit[5]{cm} ned i målerøret og fest tråden ved å sette en slangebit i åpningen. Fyll opp med ionebyttet vann. Også hullet i slangebiten skal være fylt.
+			\item Heng magnesiumbiten med kobbertråden ca. \SI{5}{cm} ned i målerøret og fest tråden ved å sette en slangebit i åpningen. Fyll opp med ionebyttet vann. Også hullet i slangebiten skal være fylt.
 			
 			\item Fyll begerglasset halvfullt med vann og sett opp et stativ med klemme ved siden av. Hold over åpningen i målerøret og snu det opp ned og sett den ned i begerglasset. Fest målerøret i stativet med klemmen.
 			
 			\item Saltsyren strømmer ned og reagere med magnesiumbiten så det produseres hydrogengass som samles i målerøret. Vent til reaksjonen er ferdig.
 			
-			\item Mål temperaturen i nærheten av målerøret, mål volumet av gassen (til nærmeste 0,05 mL) og mål vannhøyden fra overflaten i begerglasset til bunnen av menisken i målerøret med en linjal.
+			\item Mål temperaturen i nærheten av målerøret, mål volumet av gassen (til nærmeste \SI{0.05}{mL}) og mål vannhøyden fra overflaten i begerglasset til bunnen av menisken i målerøret med en linjal.
 		\end{itemize}
 		
 		\item En veileder vil oppgi barometertrykket.
@@ -295,32 +209,21 @@
 	
 	\section{Rapport}
 	Øverst på rapporten skal det stå:
-	
 	\begin{itemize}
-		
 		\item Dato for gjennomføring av labøvelsen.
-		
 		\item Navn og plassnummer på laboratoriet.
-		
 		\item Navn på labpartner.
-		
 		\item Gruppenummer.
-		
 		\item Gruppelærer.
-		
 	\end{itemize}
-	
-	
 	
 	Rapporten skal inneholde:
 	
 	\paragraph{Hensikt}
 	Forklar \emph{kort} hensikten og målet med øvelsen med dine egne ord.
 	
-	
 	\paragraph{Eksperimentelt}
 	Forklar \emph{kort} den eksperimentelle delen med egne ord.
-	
 	
 	\paragraph{Resultater}
 	Oppsummer resultatene dine i en tabell som for hvert replikat angir
@@ -341,12 +244,8 @@
 	\paragraph{Diskusjon}
 	\begin{itemize}
 		\item Vurder resultatene dine.
-		
-		\item Hvordan stemmer den molare massen du har beregnet for magnesium med periodesystemets oppgitte verdi på \unit[24,31]{g/mol}.
-		
+		\item Hvordan stemmer den molare massen du har beregnet for magnesium med periodesystemets oppgitte verdi på \SI{24.31}{g/mol}.
 		\item Skjedde det endringer eller feil under forsøket som kan ha påvirket resultatet?
 	\end{itemize}
-	
-	
-	
+
 \end{document}
