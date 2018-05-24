@@ -18,53 +18,48 @@
 	\subsection{Mål og hensikt}
 	\begin{itemize}
 		\item Vite hva en ideell gass er og skjønne hvordan den påvirkes av omgivelsene.
-		
 		\item Finne den molare massen til et metall ved å bruke teori om ideelle gasser.
-		
 		\item Kunne beregne usikkerhet uttrykt som standardfeil. 
 	\end{itemize}
 	
 	\subsection{Forberedelser}
 	\begin{itemize}
-		\item Kapittel 5.1-5.5 i læreboken
-		
-		\item Gjennomføringen av laboratorieforsøket vises i filmen Oppgave 1A - magnesium, som du finner på \\ \url{http://www.uio.no/studier/emner/matnat/kjemi/KJM1100/h13/podcast}. \\
+		\item Kapittel 5.1--5.5 i læreboken.
+		\item Gjennomføringen av laboratorieforsøket vises i filmen \emph{Oppgave 1A - magnesium}, som du finner på \\ \url{http://www.uio.no/studier/emner/matnat/kjemi/KJM1100/h13/podcast}. \\
 		Se denne før du går på lab'en.
 	\end{itemize}
 	
 	\subsection{Statistikk}
 	\paragraph{Standardfeil}
-	Standardfeilen, som også kalles standardavviket for middelverdien/gjennomsnittet, er et mål på usikkerheten som kommer av at vi bruker vårt bergnede gjennomsnitt istedenfor det sanne gjennomsnittet. Standardfeilen betegnes ofte SE (for standard error).
+	Standardfeilen, som også kalles standardavviket til middelverdien og standardavviket til gjennomsnittet, er et mål på usikkerheten som kommer av at vi bruker vårt bergnede gjennomsnitt istedenfor det sanne gjennomsnittet. Standardfeilen betegnes ofte \SE (for standard error).
 	
 	Jo flere målinger vi gjør, dess mer representativt er gjennomsnittet vårt for det sanne gjennomsnittet, og jo mindre spredningen i målingene er, desto mer sannsynlig er det at gjennomsnittet ligger nær den "sanne" verdien. Standardfeilen er med andre ord avhengig både av antall målinger og spredningen i målingene, og uttrykkes som 
-	\begin{equation}
-		SE =\frac{s}{\sqrt{n}}
-	\end{equation}
+	\begin{equation*}
+		\SE =\frac{s}{\sqrt{n}}
+	\end{equation*}
 	
-	Det er vanlig å oppgi gjennomsnittet med usikkerhet uttrykt som standardfeil, altså $\bar{x}\pm SE$.
-	
+	Det er vanlig å oppgi gjennomsnittet med usikkerhet uttrykt som standardfeil, altså $\bar{x}\pm \SE$.
 	
 	Vær oppmerksom på at usikkerhet beregnet som standardfeil antar at målingene er normalfordelte og at det bare er tilfeldige feil. Ingen vanlige statistiske metoder tar høyde for systematiske feil. Den eneste måten å unngå systematiske feil på, er å jobbe med riktig teknikk og sørge for at utstyret du bruker er kalibrert.
-	
 	
 	\subsection{Teori}
 	\paragraph{Reaksjonen}
 	Mange metaller reagerer med syrer. For eksempel vil sink og saltsyre reagere og danne hydrogengass etter reaksjonslikningen
-	\begin{equation*}
-		\ch{Zn (s) + 2 HCl (aq) -> ZnCl2 (aq) + H2 (g)}    
-	\end{equation*}
+	\begin{reaction*}
+		Zn (s) + 2 HCl (aq) -> ZnCl2 (aq) + H2 (g) 
+	\end{reaction*}
 	
 	Hvis en kjent masse av metallet reagerer fullstendig med syren og man samler opp hydrogengassen som dannes, kan man bruke gassvolumet til å finne stoffmengden hydrogengass (se neste avsnitt), og ved hjelp av reaksjonsligningen beregne stoffmengden (antall mol) av metallet. Da kan man bestemme den molare massen $M$ til metallet ved likningen
-	\begin{equation}
-	M = \frac{m}{n}
-	\end{equation}
+	\begin{equation*}
+		M = \frac{m}{n}
+	\end{equation*}
 	der $m$ og $n$ er henholdsvis massen og stoffmengden til metallet. Stoffmengden av metallet kan relateres til stoffmengden av hydrogengassen ved hjelp av reaksjonslikningen. 
 	
 	\paragraph{Ideelle gasser}
 	Stoffmengden hydrogen kan tilnærmet bestemmes fra den ideelle gassloven
-	\begin{equation}
-	PV = nRT
-	\end{equation}
+	\begin{equation*}
+		PV = nRT
+	\end{equation*}
 	der $P$, $V$, $n$ og $T$ er henholdsvis trykket, volumet, stoffmengden og temperaturen til hydrogengassen og $R$ er gasskonstanten. Volumet og temperaturen kan måles direkte, men trykket er litt mer innviklet å finne. 
 	
 	\paragraph{Trykk}
@@ -74,27 +69,26 @@
 	
 	Trykket i en væskesøyle med høyde $h$ over væskeflaten er gitt ved 
 	\begin{equation}
-	P=\rho gh \label{eq:rgh}
+		P=\rho gh \label{eq:rgh}
 	\end{equation}
 	der $\rho$ er tettheten til væsken og $g$ er tyngdeakselerasjonen.
 	
 	\paragraph{Damptrykk}
 	Alle væsker fordamper litt ved alle temperaturer, ikke bare ved kokepunktet. Hvor mye den fordamper kalles væskens damptrykk. Sammen med hydrogengassen vil det derfor også være litt vanndamp som vil bidra til trykket inne i målerøret.
 	
-	Tabell \ref{vap} gir vannets damptrykk ved utvalgte temperaturer. For å finne damptrykket for temperaturer som ikke står i tabellen, kan man gjøre en lineær interpolasjon. Lineær interpolasjon kan du bruke når måleverdiene endrer seg lineært. Da kan du anslå verdien $y$ i et punkt $x$ mellom to punkter $x_i$ og $x_{i+1}$  ved å bruke formelen
+	\Cref{tbl:vap} gir vannets damptrykk ved utvalgte temperaturer. For å finne damptrykket for temperaturer som ikke står i tabellen, kan man gjøre en lineær interpolasjon. Lineær interpolasjon kan du bruke når måleverdiene endrer seg lineært. Da kan du anslå verdien $y$ i et punkt $x$ mellom to punkter $x_i$ og $x_{i+1}$  ved å bruke formelen
 	\begin{equation}
-	y = y_i + \frac{y_{i+1} - y_i}{x_{i+1} - x_i}(x-x_i). \label{eq:inter}
+		y = y_i + \frac{y_{i+1} - y_i}{x_{i+1} - x_i}(x-x_i). \label{eq:inter}
 	\end{equation}
+	\Cref{fig:vap} illustrerer dette. Mellom hvert datapunkt trekker man en rett linje for å få et tilnærmet trykk ved den aktuelle temperaturen.
 	
-	
-	
-	\begin{table}[htpb]
+	\begin{table}[H]
 		\centering
 		\caption{Vannets damptrykk $P$ ved utvalgte temperaturer $\Theta$}
-		\label{vap}
+		\label{tbl:vap}
 		\begin{tabular}{rr}
 			\toprule
-			$\Theta/\si{\degreeCelsius}$ & $P/\text{atm}$ \\
+			$\Theta/\si{\degreeCelsius}$ & $P/\si{atm}$ \\
 			\midrule
 			16.0 & 0.01793 \\
 			18.0 & 0.02036 \\
@@ -106,6 +100,35 @@
 			30.0 & 0.04187 \\ \bottomrule
 		\end{tabular}
 	\end{table}
+
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			\begin{axis}[
+					xlabel=$\Theta/\si{\degreeCelsius}$,
+					ylabel=$P/\si{atm}$,
+					y tick label style={
+						/pgf/number format/.cd,
+						fixed zerofill,
+						precision=1,
+						/tikz/.cd
+					}
+				]
+				\addplot[color=red,mark=x] coordinates {
+					(16.0, 0.01793)
+					(18.0, 0.02036)
+					(20.0, 0.02308)
+					(22.0, 0.02609)
+					(24.0, 0.02945)
+					(26.0, 0.03317)
+					(28.0, 0.03730)
+					(30.0, 0.04187)
+				};
+			\end{axis}
+		\end{tikzpicture}
+		\caption{Sammenhengen mellom temperatur og vannets damptrykk. Data fra \cref{tbl:vap} (kryss) med lineær interpolasjon (linjer).}
+		\label{fig:vap}
+	\end{figure}
 	
 	\subsection{Oppgaver}
 	\begin{enumerate}
@@ -148,17 +171,20 @@
 	\subsubsection{Sikkerhet}
 	\SI{6}{M} \ch{HCl} (saltsyre) er etsende. Bruk vernebriller og labfrakk under hele forsøket.
 	
-	VED KONTAKT MED ØYNENE: Skyll forsiktig med vann i flere minutter. Fjern eventuelle kontaktlinser dersom dette enkelt lar seg gjøre. Fortsett skyllingen.
+	\paragraph{Ved kontakt med øynene}
+	Skyll forsiktig med vann i flere minutter. Fjern eventuelle kontaktlinser dersom dette enkelt lar seg gjøre. Fortsett skyllingen.
 	
-	VED HUDKONTAKT: Vask med mye vann
+	\paragraph{Ved hudkontakt}
+	Vask med mye vann
 	
-	VED KONTAKT MED KLÆR: Skyll umiddelbart tilsølte klær og hud med mye vann før klærne fjernes. 
+	\paragraph{Ved med klær}
+	Skyll umiddelbart tilsølte klær og hud med mye vann før klærne fjernes. 
 	
 	\subsubsection{Utstyr}
 	
 	\begin{table}[htpb]
 		\caption{Utstyr}
-		\label{equipment}
+		\label{tbl:equipment}
 		\begin{tabular}{ll}
 			\toprule
 			magnesiumbånd & \\ 
@@ -176,7 +202,7 @@
 		\end{tabular}
 	\end{table}
 	
-	I tabell \ref{equipment} er nødvendig utstyr oppgitt.	Noter i journalen hva slags vekt du benytter og hvilken toleranse den har. Du bør bruke samme vekt til alle målingene.
+	I \cref{tbl:equipment} er nødvendig utstyr oppgitt.	Noter i journalen hva slags vekt du benytter og hvilken toleranse den har. Du bør bruke samme vekt til alle målingene.
 	
 	\subsubsection{Fremgangsmåte}
 	\begin{itemize}
@@ -233,7 +259,7 @@
 		\item barometertrykket slik det er oppgitt på laboratoriet
 		\item temperaturen der forsøket ble utført
 		\item høyden på vannsøylen ved forsøkets slutt
-		\item vannets damptrykk ved den målte temperaturen. Dette kan leses av fra Tabell \ref{vap} eller beregnes ved lineær interpolasjon.
+		\item vannets damptrykk ved den målte temperaturen. Dette kan leses av fra \cref{tbl:vap} eller beregnes ved lineær interpolasjon.
 		\item beregnet molar masse for magnesium
 	\end{itemize}
 	
