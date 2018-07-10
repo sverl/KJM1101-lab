@@ -1,0 +1,292 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = nb_NO
+
+\input{../preamble}
+
+\title{Laboratorieoppgave 4\\
+	   Kalorimetri og reaksjonsvarmedate}
+\author{Sverre Løyland}
+\date{}
+
+\begin{document}
+	
+	\maketitle
+	
+	\section{Prelab}
+	
+	\subsection{Mål og hensikt}
+	\begin{itemize}
+		\item Forstå begrepene kalorimetri, varme, reaksjonsvarme og varmekapasitet.
+		
+		\item Kunne benytte lineærregresjon.
+	\end{itemize}	
+	
+	\subsection{Teori}
+	\paragraph{Temperatur}
+	Temperatur er et mål på den \emph{termiske energien} til et system, forenklet kan man si at temperaturen er et mål på den gjennomsnittlige kinetiske energien i et system.
+	Det vil si at i et system med høy temperatur beveger partiklene seg mye ved at de for eksempel vibrerer og roterer.
+	
+	\paragraph{Absolutt temperatur}
+	I dagliglivet brukes vanligvis enheten grader Celsius, \si{\degreeCelsius}.
+	Ordet \emph{grader} betyr at det er målt relativt til noe, for Celsius er det smelte- og kokepunktet til vann. I kjemi vil vi derimot bruke \emph{absolutte} enheter som vil si at det er målt relativt til nullpunktet.
+	For temperatur betyr det at det er målt relativt til et system uten noe kinetisk energi.
+	
+	Den absolutte skalaen for grader Celsisus er \emph{Kelvin}.
+	Legg merke til at det ikke heter \emph{grader Kelvin} siden det er absolutt skala.
+	Kelvinskalaen er veldig lik skalaen for grader Celsisus, bare at den er forskjøvet med \SI{273.15}{\degreeCelsius}.
+	
+	\paragraph{Varme}
+	I dagligtalen betyr varme det samme som temperatur, men det er ikke tilfellet i kjemi! Varme er et mål på overføring av energi mellom to systemer.
+	Selv om noe har høy temperatur, betyr ikke det nødvendigvis at det overfører mye energi.
+	Legg også merke til at varme overføres \emph{mellom} to systemer så det gir ikke mening i kjemien å si at \emph{én} ting har mye varme.
+	
+	Man har bestemt at positiv varme betyr at omgivelsene overfører energi til systemet, altså synker i temperaturen til omgivelsene, og negativ varme er at omgivelsene tar opp energi fra systemet, altså øker temperaturen til omgivelsene.
+	
+	\paragraph{Varmekapasitet}
+	Varmekapasitet er sammenhengen mellom varme og temperaturforskjell.
+	Varmekapasitet er hvor mye varme som trengs for å endre temperaturen med en viss temperaturforskjell.
+	Intuitivt skjønner man at dette er avhengig av mengden stoff man har, det krever mer varme for å øke temperaturen til \SI{1}{\kilo\gram} vann enn \SI{1}{\gram} vann.
+	For eksempel er varmekapasiteten til \SI{1}{\kilo\gram} vann \SI{4185.5}{\joule\per\kelvin} som vil si at det kreves \SI{4185.5}{\joule} varme for å endre temperaturen med \SI{1}{\kelvin}.
+	Sammenhengen mellom varme og varmekapasitet blir da
+	\begin{equation}
+		q = C\Delta T \label{eq:heatcap}
+	\end{equation}
+	der $q$ er varmen, $C$ er varmekapasiteten og $\Delta T$ er temperaturforskjellen.
+	
+	\paragraph{Spesifikk og molar varmekapasitet}
+	Siden varmekapasitet er avhengig av mengden stoff, oppgir man vanligvis \emph{spesifikk varmekapasitet} i stedet som er varmekapasitet per enhet masse.
+	Tilsvarende forrige avsnitt er den spesifikke varmekapasiteten til vann \SI{4185.5}{\joule\per\kelvin\per\kilo\gram}.
+	Sammenhengen mellom varmekapasiteten og den spesifikke varmekapasiteten blir da
+	\begin{equation}
+		C = cm \label{eq:specheatcap}
+	\end{equation}
+	der $C$ er varmekapasiteten, $c$ er den spesifikke varmekapasiteten og $m$ er massen.
+	Noen ganger brukes også molar varmekapasitet som er varmekapasiteten per stoffmengde.
+	
+	\paragraph{Kalorimetri}
+	Et kalorimeter er et system som ikke utveksler varme med omgivelsene.
+	Det vil si at den totale varmeutvekslingen mellom systemet og omgivelsene er $0$, det vil si $q_\mathrm{tot}=0$.
+	For eksempel kan et kalorimeter inneholde varmt og kaldt vann (som ikke er blandet).
+	Når det varme og kalde vannet blander seg, vil de utveksle varme og nå likevekt.
+	Varmen som er utvekslet mellom det kalde vannet og systemet med likevekt betegnes $q_\mathrm{v}$ og tilsvarende er varmen som utveksles mellom det varme vannet og systemet $q_\mathrm{k}$.
+	Dersom kalorimeteret ikke utveksler noe varme, blir sammenhengen mellom $q_\mathrm{v}$ og $q_\mathrm{k}$ gitt ved
+	\begin{align*}
+		q_\mathrm{tot} &= 0 \\
+		q_\mathrm{v} + q_\mathrm{k} &= 0.
+	\end{align*}
+	Setter man inn utrykkene fra \Cref{eq:heatcap} og \Cref{eq:specheatcap} får man
+	\begin{equation*}
+		c_{\ch{H2O}}m_\mathrm{v}(T-T_\mathrm{v}) + c_{\ch{H2O}}m_\mathrm{k}(T-T_\mathrm{k}) = 0
+	\end{equation*}
+		Løser man denne med hensyn på $T$ får man
+	\begin{equation}
+		T = \frac{m_\mathrm{v}T_\mathrm{v} + m_\mathrm{k}T_\mathrm{k}}{m_\mathrm{v} + m_\mathrm{k}}. \label{eq:Tmix}
+	\end{equation}
+%	Denne typen uttrykk kalles for vektede gjennomsnitt.
+
+	Antagelsen om at kalorimeteret ikke utveksler varme med systemet er feil.
+	Hvis man måler temperaturen etter blanding, vil man få et avvik fra \cref{eq:Tmix}.
+	Fra dette avviket er det mulig å beregne kalorimeterets varmekapasitet.
+	Dersom kalorimeteret har samme temperatur som det kalde vannet, $T_\mathrm{k}$, før det varme vannet tilsettes, er varmekapasiteten til kalorimeteret gitt ved
+	\begin{equation}
+		C_{\mathrm{cal}} = c_{\ch{H2O}}\left(\frac{T_\mathrm{v}-T}{T-T_\mathrm{k}}m_\mathrm{v}-m_\mathrm{k}\right) \label{eq:cal}
+	\end{equation}
+	der $C_{\mathrm{cal}}$ er varmekapasiteten til kalorimeteret.
+	
+	\paragraph{Reaksjonsvarme}
+	Reaksjonsvarme er varmen som overføres i en reaksjon til systemet.
+	Den molare reaksjonsvarmen er det samme som reaksjonsentalpien.
+	For eksempel har reaksjonen
+	\begin{reaction}
+		H^+ (aq) + OH^- (aq) -> H2O (l) \label{rxn:neu}
+	\end{reaction}
+	en reaksjonsvarme på omtrent \SI{-60}{\kilo\joule\per\mole} reaksjonen gir fra seg energi til omgivelsene, reaksjonen er altså eksoterm.
+	Denne reaksjonen kan gjøres ved å blande saltsyre, \ch{HCl (aq)}, og natriumhydroksidløsning, \ch{NaOH (aq)}.
+	Da kan reaksjonsvarmen bestemmes ved å blande saltsyre og natriumhydroksidløsning med kjente volumer, konsentrasjoner og temperaturer og måle temperaturen etter endt reaksjon.
+	Man kan vise at så lenge saltsyren er den begrensende reaktanten, er reaksjonsvarmen proporsjonal med volumet saltsyre.
+	
+	\subsection{Statistikk}
+	
+	\paragraph{Minste kvadraters metode}
+	Ofte ønsker man å sammenligne målt data med teoretiske formler.
+	Da er det vanlig at dataene ikke passer trenden til formelen perfekt så det er små avvik som kalles residualer.
+	La de målte dataene være $f_i$ og de teoretiske $f(x_i)$.
+	Da er residualene $r_i=f_i-f(x_i)$.
+	Dersom teorien er bra, er residualene små.
+	
+	Det er ikke alltid man kjenner alle størrelsene i formelen $f(x)$.
+	Da kan man finne disse ved å prøve forskjellige verdier for den ukjente størrelsen som minimerer residualene, dette kalles regresjon.
+	Den vanligste metoden for regresjon bruker minste kvadraters metode.
+	Den minimerer summen av residualene kvadrert, $\sum_{i=1}^n r_i^2 = r_1^2+r_2^2+\ldots+r_n^2$.
+	\Cref{fig:lsr} viser data med lineær minste kvadraters metode og tilhørende residualer.
+	
+%	For lineærregresjon kan man vise at de eksplisitte uttrykkene for skjæringspunktet, $\hat{\alpha}$, og skjæringspunktet, $\hat{\beta}$, er gitt ved
+%	\begin{align}
+%		\hat{\alpha} &= \bar{y} - \hat{\beta}\bar{x} \\
+%		\hat{\beta} &= r_{xy}\frac{s_y}{s_x} \\
+%		r_{xy} &= \frac{1}{(n-1)s_xs_y}\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})
+%	\end{align}
+%	der $\bar{x}$ og $\bar{y}$ er gjennomsnittet til $x$ og $y$, $s_x$ og $s_y$ er standardavviket til $x$ og $y$ og $r_{xy}$ er den såkalte korrelasjonskoeffisienten.
+%	$R^2=r_{xy}^2$ forteller noe om hvor bra regresjonslinjen passer.
+%	Hvis alle regresjonslinjen $R^2=1$.
+
+	Som nevnt er reaksjonsvarmen i \Cref{rxn:neu} proporsjonal med volumet saltsyre så lenge saltsyren er begrensende reaktant.
+	Dersom man måler reaksjonsvarmen ved forskjellige volumer saltsyre, kan man bruke regresjon til å finne den molare reaksjonsvarmen siden stigningen til reaksjonsvarmen er avhengig av den molare reaksjonsvarmen.
+	
+	For lineærregresjon med skjæringspunktet satt til origo er stigningstallet gitt ved
+	\begin{equation}
+		\hat{\beta} = \frac{\sum_{i=1}^nx_iy_i}{\sum_{i=1}^nx_i^2}
+	\end{equation}
+	med varians
+	\begin{equation}
+		\sigma_{\hat{\beta}}^2 = \frac{\sum_{i=1}^{n}(y_i-\hat{\beta}x_i)^2}{(n-1)\sum_{i=1}^nx_i^2}.
+	\end{equation}
+	I praksis er det nesten ingen som bruker disse formlene, i stedet bruker man programpakker der formlene ligger inne eller programmerer dem.
+	
+	\begin{figure}[H]
+		\centering
+		
+		% 10 random points
+		\pgfmathsetseed{1}
+		\pgfplotstableset{ 
+			create on use/x/.style={create col/expr={\pgfplotstablerow + rand}},
+			create on use/y/.style={create col/expr={(0.1*\thisrow{x}+10)+4*rand}}
+		}
+		\pgfplotstablenew[columns={x,y}]{10}\loadedtable
+		
+		% Least squares linear regression
+		\pgfplotstablecreatecol[linear regression]{regression}{\loadedtable}
+		
+		% Residual style
+		\pgfplotsset{
+			residuals/.style ={
+				only marks,
+				error bars/y dir=minus,
+				error bars/y explicit,
+				/pgfplots/table/.cd,
+				y error expr=\thisrow{y}-\thisrow{regression}
+			}
+		}
+		
+		\begin{tikzpicture}
+			\begin{axis}[xlabel=$x$, ylabel=$y$, xmin=0, xmax=10, ymin=0, ymax=20]
+				\addplot+[mark=x,red,residuals] table {\loadedtable};
+%				\addplot [no markers] table [y=regression] {\loadedtable};
+				\addplot[domain=0:10] {\pgfplotstableregressiona*x + \pgfplotstableregressionb};
+			\end{axis}
+		\end{tikzpicture}
+		\caption{Datapunkter (kryss), lineær minste kvadraters regresjon (svart linje) og residualer (røde, vertikale linjer).}
+		\label{fig:lsr}
+	\end{figure}
+
+	\begin{table}
+		\centering
+		\caption{Temperaturen $T_\mathrm{k}$ i \SI{50.0}{g} kaldt vann og temperaturen $T_\mathrm{v}$ i \SI{50.0}{g} varmt vann før blanding.
+				 Etter blanding ble temperaturen ved termisk likevekt $T$.}
+		\label{tbl:calexample}
+		\begin{tabular}{r S[table-format=2.1] S[table-format=2.1] S[table-format=2.1] l}
+			\toprule
+			Replikat & $T_\mathrm{k}/\si{\degreeCelsius}$ & $T_\mathrm{v}/\si{\degreeCelsius}$ & $T/\si{\degreeCelsius}$ & $C_\mathrm{cal}/\si{\joule\per\kelvin}$ \\ \midrule
+			       1 &                               21.9 &                               40.2 &                    30.9 &                     \cellcolor{blue!10} \\
+			       2 &                               21.7 &                               40.2 &                    30.9 &                     \cellcolor{blue!10} \\ 
+			       3 &                               22.0 &                               40.2 &                    31.0 &                     \cellcolor{blue!10} \\
+			       4 &                               22.0 &                               40.2 &                    30.9 &                     \cellcolor{blue!10} \\
+			       5 &                               22.2 &                               40.2 &                    31.2 &                     \cellcolor{blue!10} \\ \midrule
+			                                                                            \multicolumn{4}{r}{gjennomsnitt} &                     \cellcolor{blue!10} \\
+			                                                                            \multicolumn{4}{r}{standardfeil} &                     \cellcolor{blue!10} \\ \bottomrule 
+		\end{tabular}
+	\end{table}
+
+	\begin{table}
+		\centering
+		\caption{Volumet saltsyre, $V_{\ch{HCl}}$, med temperatur $T_{\ch{HCl}}$ og temperaturen $T_{\ch{NaOH}}$ til tilsatt natriumhydroksidløsning.
+				 Suren og basen hadde konsentrasjon \SI{3.000}{\molar}.
+				 Etter blanding ble temperaturen ved termisk likevekt $T$.}
+		\label{tbl:calexample2}
+		\begin{tabular}{r S[table-format=1.4] S[table-format=1.4] S[table-format=2.1] S[table-format=2.1] S[table-format=2.1]}
+			\toprule
+			Replikat & $V_{\ch{HCl}}/\si{\litre}$ & $V_{\ch{NaOH}}/\si{\litre}$ & $T_{\ch{HCl}}/\si{\degreeCelsius}$ & $T_{\ch{NaOH}}/\si{\degreeCelsius}$ & $T/\si{\degreeCelsius}$ \\ \midrule
+			       1 &                     0.0100 &         \cellcolor{blue!10} &                               22.0 &                                22.8 &                    26.7 \\
+			       2 &                     0.0200 &         \cellcolor{blue!10} &                               22.0 &                                22.7 &                    30.9 \\ 
+			       3 &                     0.0300 &         \cellcolor{blue!10} &                               22.0 &                                22.8 &                    35.3 \\
+			       4 &                     0.0400 &         \cellcolor{blue!10} &                               22.0 &                                23.0 &                    39.1 \\
+			       5 &                     0.0500 &         \cellcolor{blue!10} &                               22.0 &                                22.7 &                    42.8 \\ \bottomrule 
+		\end{tabular}                                                                                                                                                      
+	\end{table}
+	
+	\subsection{Oppgaver}
+	\begin{enumerate}[label=\alph*)]
+		\item Utled \cref{eq:cal} ved å bruke $q_\mathrm{tot}=q_\mathrm{k} + q_\mathrm{v} + q_\mathrm{cal} = 0$, \cref{eq:heatcap} og \cref{eq:specheatcap}.
+		
+		\item En student helte \SI{50.0}{g} vann i et kalorimeter og målte temperaturen $T_\mathrm{k}$.
+		Etter å ha tilsatt \SI{50.0}{g} varmt vann med temperatur $T_\mathrm{v}$ og blandet godt ble sluttemperaturen målt til $T$.
+		Studenten gjentok forsøket 5 ganger.
+		Resultatene er oppsummert i \Cref{tbl:calexample}.
+		
+		\item En student har et kalorimeter med saltsyre med kjent konsentrasjon, $\left[\ch{HCl}\right]$, volum, $V_{\ch{HCl}}$, og temperatur, $T_{\ch{HCl}}$.
+		Til kalorimeteret tilsetter studenten en natriumhydroksidløsning med kjent konsentrasjon, $\left[\ch{NaOH}\right]$, volum, $V_{\ch{NaOH}}$, og temperatur, 	$T_{\ch{NaOH}}$ der natriumhydroksidløsningen alltid er begrensende reaktant.
+		Etter en stund måler studenten temperaturen i kalorimeteret, $T$.
+		\begin{enumerate}[label=\roman*)]
+			\item Vis at $q_\mathrm{rxn} + q_{\ch{HCl}} + q_{\ch{NaOH}} + q_\mathrm{cal} = 0$ der $q_\mathrm{rxn}$ er reaksjonsvarmen, $q_{\ch{HCl}}$ er varmeutvekslingen mellom saltsyren og systemet i likevekt, $q_{\ch{NaOH}}$ er varmeutvekslingen mellom natriumhydroksidløsningen og systemet i likevekt og $q_\mathrm{cal}$ er varmeutvekslingen mellom kalorimeteret og systemet i likevekt.
+			\item Vis at $q_\mathrm{rxn}=q_\mathrm{m, rxn} \left[\ch{HCl}\right] V_{\ch{HCl}}$ der $q_\mathrm{m, rxn}$ er den molare reaksjonsvarmen.
+			\item Vis at $q_{\ch{HCl}}=c_{\ch{HCl}}\rho_{\ch{HCl}}V_{\ch{HCl}}(T - T_{\ch{HCl}})$ der $c_{\ch{HCl}}$ og $\rho_{\ch{HCl}}$ er henholdsvis den spesifikke varmekapasiteten og tettheten til saltsyren.
+			\item Vis at $q_{\ch{NaOH}}=c_{\ch{NaOH}}\rho_{\ch{NaOH}}V_{\ch{NaOH}}(T - T_{\ch{NaOH}})$ der $c_{\ch{NaOH}}$ og $\rho_{\ch{HCl}}$ er henholdsvis den spesifikke varmekapasiteten og tettheten til natriumhydroksidløsningen.
+			\item Vis at $q_\mathrm{cal}=C_\mathrm{cal}(T - T_{\ch{HCl}})$ der $C_\mathrm{cal}$ er varmekapasiteten til kalorimeteret.			
+		\end{enumerate}		
+		\item Anta nå at tettheten til saltsyren og natriumhydroksidløsningen er den samme som vann, $\rho_{\ch{HCl}}=\rho_{\ch{NaOH}}=\rho_{\ch{H2O}}$, den spesifikke varmekapasiteten til saltsyren og natriumhydroksidløsningen er den samme som vann, $c_{\ch{HCl}}=c_{\ch{NaOH}}=c_{\ch{H2O}}$, det totale volumet til saltsyren og natriumhydroksidløsningen er konstant, $V_{\ch{HCl}} + V_{\ch{NaOH}} = V$, konsentrasjonene til saltsyren og natriumhydroksidløsningen er det samme, $\left[\ch{HCl}\right]=\left[\ch{NaOH}\right]$, temperaturen til saltsyren og natriumhydroksidløsningen er den samme, $T_{\ch{HCl}}
+		=T_{\ch{NaOH}}=T_0$ og kalorimeteret ikke utveksler varme med systemet, $q_\mathrm{cal}=0$.
+		Bruk informasjonen fra forrige oppgave til å vise at 
+		\begin{equation}
+			\Delta T = \frac{q_\mathrm{m, rxn}\left[\ch{HCl}\right]}{c\rho V}V_{\ch{HCl}}
+		\end{equation}
+		der $\Delta T=T - T_0$ er temperaturforskjellen før og etter løsningene blandes.
+		
+		\item Vis at antagelsen om at syren er begrensende reaktant er ekvivalent med at volumet av syren er mindre enn basen når konsentrasjonene er de samme.
+		
+		\item En student fylte et kalorimeter med \SI{3.00}{\molar} saltsyre og målte temperaturen til $T_{\ch{HCl}}$.
+		Deretter tilsatte studenten \SI{3.00}{\molar} natriumhydroksid med temperatur $T_{\ch{NaOH}}$ slik at totalvolumet var konstant og lik \SI{0.100}{\liter}.
+		Ved reaksjonsslutt ble temperaturen målt til $T$.
+		Fem forsøk ble gjennomført og resultatene er oppsummert i \cref{tbl:calexample2}.
+		\begin{enumerate}[label=\roman*)]
+			\item Plot $\Delta T$ som en funksjon av tilsatt volum saltsyre, $V_{\ch{HCl}}$.
+			\item Fyll ut tabellen og beregn den molare reaksjonsvarmen $q_\mathrm{m, rxn}$ med feilestimat ved å bruke regresjon.
+		\end{enumerate}	
+	\end{enumerate}
+	
+	\clearpage
+	\section{Labøvelse}
+	
+	\subsection{Mål og hensikt}
+	\begin{itemize}
+		\item 
+	\end{itemize}
+	
+	\subsection{Eksperimentelt}
+	
+	\subsubsection{Utstyr}
+	
+	\begin{table}[H]
+		\caption{Utstyr}
+		\begin{tabular}{ll}
+			\toprule
+			& \\ \bottomrule 
+		\end{tabular}
+		\label{equipment}
+	\end{table}
+	
+	I \vref{equipment} er nødvendig utstyr oppgitt.	Noter hvilken vekt du benytter og toleransen dens.
+	Du burde bruke samme vekt til alle målingene dine for at de skal være konsekvente.
+	
+	\subsubsection{Fremgangsmåte}
+	\begin{itemize}
+		\item 
+		
+		\item 
+		\begin{itemize}
+			\item 
+		\end{itemize}		
+	\end{itemize}	
+	
+	\input{../report}
+	
+\end{document}

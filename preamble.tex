@@ -12,6 +12,7 @@
 \usepackage{siunitx}
 \sisetup{output-decimal-marker = {,}}
 \sisetup{exponent-product=\cdot}
+\DeclareSIUnit{\molar}{M}
 
 
 % Tables
@@ -40,6 +41,7 @@
 \usepackage{flafter}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.16}
+\usepackage{pgfplotstable}
 
 % Code
 %\usepackage{minted}    
@@ -84,3 +86,7 @@
 
 % Custom commands
 \newcommand{\SE}{\ensuremath{\mathrm{SE}}} % Typeset standard error
+
+% Norwegian translation
+% This might crash in future as documentation specifies <lang> <key> <translation>
+\DeclareChemTranslation{Reaction}{Norsk}{Reaksjon}

@@ -5,7 +5,7 @@
 
 \title{Laboratorieoppgave 1:\\
 Volumetrisk nøyaktighet og presisjon}
-\author{}
+\author{Sverre Løyland og Karoline Fægri}
 \date{}
 
 \begin{document}
@@ -93,7 +93,7 @@ Volumetrisk nøyaktighet og presisjon}
 		s^2 &= \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2 \\
 		&=\frac{1}{n-1}\left[(x_1-\bar{x})^2 + (x_2-\bar{x})^2 + \dots + (x_n-\bar{x})^2\right]
 	\end{align*}
-	der $\bar{x}$ er gjennsomsnittet. Standardavvik $s$ er følgelig gitt ved	$s=\sqrt{s^2}$.
+	der $\bar{x}$ er gjennomsnittet. Standardavvik $s$ er følgelig gitt ved $s=\sqrt{s^2}$.
 
 	For de samme verdiene i eksempelet for gjennomsnitt blir variansen
 	\begin{align*}
@@ -105,7 +105,8 @@ Volumetrisk nøyaktighet og presisjon}
 	\end{align*}
 	Som man kan se blir dette fort mye regning, og det lønner seg å gjøre dette i et regneprogram eller programmere det.
 	
-	Standardavviket blir $s=\sqrt{\SI{0.01536}{g^2}}\approx\SI{0.12}{g}$. Vanligvis velger man å oppgi standardavvik med ett eller to signifikante siffer. Gjennomsnittet var \SI{2.94}{g} og med usikkerhet oppgir man det som \SI{2.94 +- 0.12}{g} eller \SI[separate-uncertainty=true]{2.94 +- 0.12}{g}. Legg merke til at dette er en større usikkerhet en det gjeldende siffer viser i dette tilfellet så gjeldende siffer viser tilsynelatende bedre presisjon.
+	Standardavviket blir $s=\sqrt{\SI{0.01536}{g^2}}\approx\SI{0.12}{g}$. Vanligvis velger man å oppgi standardavvik med ett eller to signifikante siffer. 
+%	Gjennomsnittet var \SI{2.94}{g} og med usikkerhet oppgir man det som \SI{2.94 +- 0.12}{g} eller \SI[separate-uncertainty=true]{2.94 +- 0.12}{g}. Legg merke til at dette er en større usikkerhet en det gjeldende siffer viser i dette tilfellet så gjeldende siffer viser tilsynelatende bedre presisjon.
 	
 	Mens nøyaktigheten påvirkes av systematiske feil er presisjonen upåvirket. Tilsvarende påvirker tilfeldige feil presisjonen mens nøyaktigheten er upåvirket.
 	
