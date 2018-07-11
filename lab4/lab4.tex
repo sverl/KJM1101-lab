@@ -203,15 +203,15 @@
 				 Suren og basen hadde konsentrasjon \SI{3.000}{\molar}.
 				 Etter blanding ble temperaturen ved termisk likevekt $T$.}
 		\label{tbl:calexample2}
-		\begin{tabular}{r S[table-format=1.4] S[table-format=1.4] S[table-format=2.1] S[table-format=2.1] S[table-format=2.1]}
+		\begin{tabular}{S[table-format=3] l S[table-format=2.1] S[table-format=2.1] S[table-format=2.1]}
 			\toprule
-			Replikat & $V_{\ch{HCl}}/\si{\litre}$ & $V_{\ch{NaOH}}/\si{\litre}$ & $T_{\ch{HCl}}/\si{\degreeCelsius}$ & $T_{\ch{NaOH}}/\si{\degreeCelsius}$ & $T/\si{\degreeCelsius}$ \\ \midrule
-			       1 &                     0.0100 &         \cellcolor{blue!10} &                               22.0 &                                22.8 &                    26.7 \\
-			       2 &                     0.0200 &         \cellcolor{blue!10} &                               22.0 &                                22.7 &                    30.9 \\ 
-			       3 &                     0.0300 &         \cellcolor{blue!10} &                               22.0 &                                22.8 &                    35.3 \\
-			       4 &                     0.0400 &         \cellcolor{blue!10} &                               22.0 &                                23.0 &                    39.1 \\
-			       5 &                     0.0500 &         \cellcolor{blue!10} &                               22.0 &                                22.7 &                    42.8 \\ \bottomrule 
-		\end{tabular}                                                                                                                                                      
+			$V_{\ch{HCl}}/\si{\milli\liter}$ & $V_{\ch{NaOH}}/\si{\milli\liter}$ & $T_{\ch{HCl}}/\si{\degreeCelsius}$ & $T_{\ch{NaOH}}/\si{\degreeCelsius}$ & $T/\si{\degreeCelsius}$ \\ \midrule
+			                              10 &               \cellcolor{blue!10} &                               22.0 &                                22.8 &                    26.7 \\
+			                              20 &               \cellcolor{blue!10} &                               22.0 &                                22.7 &                    30.9 \\ 
+			                              30 &               \cellcolor{blue!10} &                               22.0 &                                22.8 &                    35.3 \\
+			                              40 &               \cellcolor{blue!10} &                               22.0 &                                23.0 &                    39.1 \\
+			                              50 &               \cellcolor{blue!10} &                               22.0 &                                22.7 &                    42.8 \\ \bottomrule 
+		\end{tabular}         
 	\end{table}
 	
 	\subsection{Oppgaver}
@@ -232,10 +232,13 @@
 			\item Vis at $q_{\ch{HCl}}=c_{\ch{HCl}}\rho_{\ch{HCl}}V_{\ch{HCl}}(T - T_{\ch{HCl}})$ der $c_{\ch{HCl}}$ og $\rho_{\ch{HCl}}$ er henholdsvis den spesifikke varmekapasiteten og tettheten til saltsyren.
 			\item Vis at $q_{\ch{NaOH}}=c_{\ch{NaOH}}\rho_{\ch{NaOH}}V_{\ch{NaOH}}(T - T_{\ch{NaOH}})$ der $c_{\ch{NaOH}}$ og $\rho_{\ch{HCl}}$ er henholdsvis den spesifikke varmekapasiteten og tettheten til natriumhydroksidløsningen.
 			\item Vis at $q_\mathrm{cal}=C_\mathrm{cal}(T - T_{\ch{HCl}})$ der $C_\mathrm{cal}$ er varmekapasiteten til kalorimeteret.			
-		\end{enumerate}		
-		\item Anta nå at tettheten til saltsyren og natriumhydroksidløsningen er den samme som vann, $\rho_{\ch{HCl}}=\rho_{\ch{NaOH}}=\rho_{\ch{H2O}}$, den spesifikke varmekapasiteten til saltsyren og natriumhydroksidløsningen er den samme som vann, $c_{\ch{HCl}}=c_{\ch{NaOH}}=c_{\ch{H2O}}$, det totale volumet til saltsyren og natriumhydroksidløsningen er konstant, $V_{\ch{HCl}} + V_{\ch{NaOH}} = V$, konsentrasjonene til saltsyren og natriumhydroksidløsningen er det samme, $\left[\ch{HCl}\right]=\left[\ch{NaOH}\right]$, temperaturen til saltsyren og natriumhydroksidløsningen er den samme, $T_{\ch{HCl}}
-		=T_{\ch{NaOH}}=T_0$ og kalorimeteret ikke utveksler varme med systemet, $q_\mathrm{cal}=0$.
+		\end{enumerate}
+		\item Anta nå at tettheten til saltsyren og natriumhydroksidløsningen er den samme som vann, $\rho_{\ch{HCl}}=\rho_{\ch{NaOH}}=\rho_{\ch{H2O}}$, den spesifikke varmekapasiteten til saltsyren og natriumhydroksidløsningen er den samme som vann, $c_{\ch{HCl}}=c_{\ch{NaOH}}=c_{\ch{H2O}}$, det totale volumet til saltsyren og natriumhydroksidløsningen er konstant, $V_{\ch{HCl}} + V_{\ch{NaOH}} = V$, konsentrasjonene til saltsyren og natriumhydroksidløsningen er det samme, $\left[\ch{HCl}\right]=\left[\ch{NaOH}\right]$ og kalorimeteret ikke utveksler varme med systemet, $q_\mathrm{cal}=0$.
 		Bruk informasjonen fra forrige oppgave til å vise at 
+		\begin{equation}
+			q_\mathrm{m, rxn}V_{\ch{HCl}} = \frac{c_{\ch{H2O}}\rho_{\ch{H2O}}}{\left[\ch{HCl}\right]}\left[V_{\ch{HCl}}(T_{\ch{HCl}}-T)+(V-V_{\ch{HCl}})(T_{\ch{HCl}}-T)\right] \label{eq:qmrxn}
+		\end{equation}
+		\item Anta videre at temperaturen til saltsyren og natriumhydroksidløsningen er den samme, $T_{\ch{HCl}}=T_{\ch{NaOH}}=T_0$, og vis at
 		\begin{equation}
 			\Delta T = \frac{q_\mathrm{m, rxn}\left[\ch{HCl}\right]}{c\rho V}V_{\ch{HCl}}
 		\end{equation}
@@ -244,12 +247,12 @@
 		\item Vis at antagelsen om at syren er begrensende reaktant er ekvivalent med at volumet av syren er mindre enn basen når konsentrasjonene er de samme.
 		
 		\item En student fylte et kalorimeter med \SI{3.00}{\molar} saltsyre og målte temperaturen til $T_{\ch{HCl}}$.
-		Deretter tilsatte studenten \SI{3.00}{\molar} natriumhydroksid med temperatur $T_{\ch{NaOH}}$ slik at totalvolumet var konstant og lik \SI{0.100}{\liter}.
+		Deretter tilsatte studenten \SI{3.00}{\molar} natriumhydroksid med temperatur $T_{\ch{NaOH}}$ slik at totalvolumet var konstant og lik \SI{100}{\milli\liter}.
 		Ved reaksjonsslutt ble temperaturen målt til $T$.
 		Fem forsøk ble gjennomført og resultatene er oppsummert i \cref{tbl:calexample2}.
 		\begin{enumerate}[label=\roman*)]
-			\item Plot $\Delta T$ som en funksjon av tilsatt volum saltsyre, $V_{\ch{HCl}}$.
-			\item Fyll ut tabellen og beregn den molare reaksjonsvarmen $q_\mathrm{m, rxn}$ med feilestimat ved å bruke regresjon.
+			\item Plot høyre side av \cref{eq:qmrxn} som en funksjon av tilsatt volum saltsyre, $V_{\ch{HCl}}$.
+			\item Beregn den molare reaksjonsvarmen $q_\mathrm{m, rxn}$ med feilestimat ved å bruke regresjon.
 		\end{enumerate}	
 	\end{enumerate}
 	
@@ -258,10 +261,31 @@
 	
 	\subsection{Mål og hensikt}
 	\begin{itemize}
-		\item 
+		\item Forstå de termodynamiske begrepene kalorimetri, varmekapasitet, varmeutveksling og reaksjonsvarme.
+		
+		\item Bestemme den molare reaksjonsvarmen for reaksjonen mellom syre og base.
+	\end{itemize}
+
+		\subsection{Forberedelser}
+	\begin{itemize}
+		\item Kapittel 9.4 i læreboken.
+		\item Gjennomføringen av laboratorieforsøket vises i filmen \emph{Oppgave 2 - Kalorimetri}, som du finner på \\ \url{http://www.uio.no/studier/emner/matnat/kjemi/KJM1100/h13/podcast}. \\
+		Se denne før du går på lab'en.
 	\end{itemize}
 	
 	\subsection{Eksperimentelt}
+	
+	\subsubsection{Sikkerhet}
+	\SI{3}{\molar} salpetersyre og \SI{3}{\molar} natriumhydroksidløsning er etsende. Bruk vernebriller og labfrakk under hele forsøket.
+	
+	\paragraph{Ved kontakt med øynene}
+	Skyll forsiktig med vann i flere minutter. Fjern eventuelle kontaktlinser dersom dette enkelt lar seg gjøre. Fortsett skyllingen.
+	
+	\paragraph{Ved hudkontakt}
+	Vask med mye vann.
+	
+	\paragraph{Ved med klær}
+	Skyll umiddelbart tilsølte klær og hud med mye vann før klærne fjernes. 
 	
 	\subsubsection{Utstyr}
 	
@@ -269,23 +293,59 @@
 		\caption{Utstyr}
 		\begin{tabular}{ll}
 			\toprule
-			& \\ \bottomrule 
+			Kalorimeter & \\
+			to målesylindre & \SI{100}{\milli\liter} \\
+			termometer og stoppeklokke & \\ 
+			eller temperatursensor & \\
+			magnetrørepinne & \\
+			magnetrører & \\
+			salpetersyre & \SI{3.000}{\molar} \\
+			natriumhydroksidløsning & \SI{3.000}{\molar} \\
+			varmebad & \\
+			hansker & \\
+			vernebriller & \\ 
+			\bottomrule 
 		\end{tabular}
 		\label{equipment}
 	\end{table}
 	
-	I \vref{equipment} er nødvendig utstyr oppgitt.	Noter hvilken vekt du benytter og toleransen dens.
-	Du burde bruke samme vekt til alle målingene dine for at de skal være konsekvente.
+	I \vref{equipment} er nødvendig utstyr oppgitt.	
 	
 	\subsubsection{Fremgangsmåte}
-	\begin{itemize}
-		\item 
-		
-		\item 
-		\begin{itemize}
+	\begin{enumerate}
+		\item
+		\begin{enumerate}
+			\item Sett kalorimeteret oppå magnetrøreren og legg magnetrørepinnen oppi.  Hell \SI{10}{\milli\liter} \SI{3.000}{\molar} salpetersyre i kalorimeteret og sett på lokket. Start magnetrøreren. \label{lst:firststep}
+			
+			\item Sett termometeret eller temperatursensoren nedi lokket. Pass på at du ikke setter det så hardt nedi at det blir hull i bunnen av kalorimeteret. Mål temperaturen etter \SI{2}{\minute}.
+			
+			\item Mål temperaturen til \SI{90}{\milli\liter} \SI{3.000}{\molar} salpetersyre og tilsett den til kalorimeteret. Mål temperaturen etter \SI{2}{\minute}. \label{lst:thirdstep}
+			
+			\item Gjenta \crefrange{lst:firststep}{lst:thirdstep} for volumene i \Cref{tbl:cal}.
+		\end{enumerate}
+	
+		\item
+		\begin{enumerate}
 			\item 
-		\end{itemize}		
-	\end{itemize}	
+		\end{enumerate}	
+	\end{enumerate}
+
+		\begin{table}
+		\centering
+		\caption{Volumet salpetersyre, $V_{\ch{HNO3}}$, med temperatur $T_{\ch{HNO3}}$ og volumet natriumhydroksidløsning, $V_{\ch{NaOH}}$, med temperatur $T_{\ch{NaOH}}$.
+			Syren og basen hadde konsentrasjon \SI{3.000}{\molar}.
+			\SI{2}{\minute} etter blanding ble temperaturen $T$ målt.}
+		\label{tbl:cal}
+		\begin{tabular}{S[table-format=2]llll}
+			\toprule
+			$V_{\ch{HCl}}/\si{\milli\litre}$ & $V_{\ch{NaOH}}/\si{\litre}$ & $T_{\ch{HCl}}/\si{\degreeCelsius}$ & $T_{\ch{NaOH}}/\si{\degreeCelsius}$ & $T/\si{\degreeCelsius}$ \\ \midrule
+			                              10 &                          90 &                \cellcolor{blue!10} &                 \cellcolor{blue!10} &     \cellcolor{blue!10} \\
+			                              20 &                          80 &                \cellcolor{blue!10} &                 \cellcolor{blue!10} &     \cellcolor{blue!10} \\ 
+			                              30 &                          70 &                \cellcolor{blue!10} &                 \cellcolor{blue!10} &     \cellcolor{blue!10} \\
+			                              40 &                          60 &                \cellcolor{blue!10} &                 \cellcolor{blue!10} &     \cellcolor{blue!10} \\
+			                              50 &                          50 &                \cellcolor{blue!10} &                 \cellcolor{blue!10} &     \cellcolor{blue!10} \\ \bottomrule 
+		\end{tabular}         
+	\end{table}	
 	
 	\input{../report}
 	
