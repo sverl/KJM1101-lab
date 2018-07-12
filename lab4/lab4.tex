@@ -138,9 +138,9 @@
 		\hat{\beta} = \frac{\sum_{i=1}^nx_iy_i}{\sum_{i=1}^nx_i^2}
 	\end{equation}
 	med varians
-	\begin{equation}
+	\begin{equation*}
 		\sigma_{\hat{\beta}}^2 = \frac{\sum_{i=1}^{n}(y_i-\hat{\beta}x_i)^2}{(n-1)\sum_{i=1}^nx_i^2}.
-	\end{equation}
+	\end{equation*}
 	I praksis er det nesten ingen som bruker disse formlene, i stedet bruker man programpakker der formlene ligger inne eller programmerer dem.
 	
 	\begin{figure}[H]
@@ -231,7 +231,7 @@
 			\item Vis at $q_\mathrm{rxn}=q_\mathrm{m, rxn} \left[\ch{HCl}\right] V_{\ch{HCl}}$ der $q_\mathrm{m, rxn}$ er den molare reaksjonsvarmen.
 			\item Vis at $q_{\ch{HCl}}=c_{\ch{HCl}}\rho_{\ch{HCl}}V_{\ch{HCl}}(T - T_{\ch{HCl}})$ der $c_{\ch{HCl}}$ og $\rho_{\ch{HCl}}$ er henholdsvis den spesifikke varmekapasiteten og tettheten til saltsyren.
 			\item Vis at $q_{\ch{NaOH}}=c_{\ch{NaOH}}\rho_{\ch{NaOH}}V_{\ch{NaOH}}(T - T_{\ch{NaOH}})$ der $c_{\ch{NaOH}}$ og $\rho_{\ch{HCl}}$ er henholdsvis den spesifikke varmekapasiteten og tettheten til natriumhydroksidløsningen.
-			\item Vis at $q_\mathrm{cal}=C_\mathrm{cal}(T - T_{\ch{HCl}})$ der $C_\mathrm{cal}$ er varmekapasiteten til kalorimeteret.			
+			\item Vis at $q_\mathrm{cal}=C_\mathrm{cal}(T - T_{\ch{HCl}})$ der $C_\mathrm{cal}$ er varmekapasiteten til kalorimeteret.
 		\end{enumerate}
 		\item Anta nå at tettheten til saltsyren og natriumhydroksidløsningen er den samme som vann, $\rho_{\ch{HCl}}=\rho_{\ch{NaOH}}=\rho_{\ch{H2O}}$, den spesifikke varmekapasiteten til saltsyren og natriumhydroksidløsningen er den samme som vann, $c_{\ch{HCl}}=c_{\ch{NaOH}}=c_{\ch{H2O}}$, det totale volumet til saltsyren og natriumhydroksidløsningen er konstant, $V_{\ch{HCl}} + V_{\ch{NaOH}} = V$, konsentrasjonene til saltsyren og natriumhydroksidløsningen er det samme, $\left[\ch{HCl}\right]=\left[\ch{NaOH}\right]$ og kalorimeteret ikke utveksler varme med systemet, $q_\mathrm{cal}=0$.
 		Bruk informasjonen fra forrige oppgave til å vise at 
@@ -239,9 +239,9 @@
 			q_\mathrm{m, rxn}V_{\ch{HCl}} = \frac{c_{\ch{H2O}}\rho_{\ch{H2O}}}{\left[\ch{HCl}\right]}\left[V_{\ch{HCl}}(T_{\ch{HCl}}-T)+(V-V_{\ch{HCl}})(T_{\ch{HCl}}-T)\right] \label{eq:qmrxn}
 		\end{equation}
 		\item Anta videre at temperaturen til saltsyren og natriumhydroksidløsningen er den samme, $T_{\ch{HCl}}=T_{\ch{NaOH}}=T_0$, og vis at
-		\begin{equation}
+		\begin{equation*}
 			\Delta T = \frac{q_\mathrm{m, rxn}\left[\ch{HCl}\right]}{c\rho V}V_{\ch{HCl}}
-		\end{equation}
+		\end{equation*}
 		der $\Delta T=T - T_0$ er temperaturforskjellen før og etter løsningene blandes.
 		
 		\item Vis at antagelsen om at syren er begrensende reaktant er ekvivalent med at volumet av syren er mindre enn basen når konsentrasjonene er de samme.
@@ -276,16 +276,19 @@
 	\subsection{Eksperimentelt}
 	
 	\subsubsection{Sikkerhet}
-	\SI{3}{\molar} salpetersyre og \SI{3}{\molar} natriumhydroksidløsning er etsende. Bruk vernebriller og labfrakk under hele forsøket.
+	\SI{3}{\molar} salpetersyre og \SI{3}{\molar} natriumhydroksidløsning er etsende.
+	Bruk vernebriller og labfrakk under hele forsøket.
 	
 	\paragraph{Ved kontakt med øynene}
-	Skyll forsiktig med vann i flere minutter. Fjern eventuelle kontaktlinser dersom dette enkelt lar seg gjøre. Fortsett skyllingen.
+	Skyll forsiktig med vann i flere minutter.
+	Fjern eventuelle kontaktlinser dersom dette enkelt lar seg gjøre.
+	Fortsett skyllingen.
 	
 	\paragraph{Ved hudkontakt}
 	Vask med mye vann.
 	
 	\paragraph{Ved med klær}
-	Skyll umiddelbart tilsølte klær og hud med mye vann før klærne fjernes. 
+	Skyll umiddelbart tilsølte klær og hud med mye vann før klærne fjernes.
 	
 	\subsubsection{Utstyr}
 	
@@ -301,36 +304,79 @@
 			magnetrører & \\
 			salpetersyre & \SI{3.000}{\molar} \\
 			natriumhydroksidløsning & \SI{3.000}{\molar} \\
+			varmeplate & \\
 			varmebad & \\
 			hansker & \\
 			vernebriller & \\ 
 			\bottomrule 
 		\end{tabular}
-		\label{equipment}
+		\label{tbl:equipment}
 	\end{table}
 	
-	I \vref{equipment} er nødvendig utstyr oppgitt.	
+	I \cref{tbl:equipment} er nødvendig utstyr oppgitt.
 	
 	\subsubsection{Fremgangsmåte}
 	\begin{enumerate}
-		\item
+		
+		\item Bestem molar reaksjonsvarme for nøytralisering av syre og base.
 		\begin{enumerate}
-			\item Sett kalorimeteret oppå magnetrøreren og legg magnetrørepinnen oppi.  Hell \SI{10}{\milli\liter} \SI{3.000}{\molar} salpetersyre i kalorimeteret og sett på lokket. Start magnetrøreren. \label{lst:firststep}
+			\item Sett kalorimeteret oppå magnetrøreren og legg magnetrørepinnen oppi.
+			Hell \SI{10}{\milli\liter} \SI{3.000}{\molar} salpetersyre i kalorimeteret og sett på lokket.
+			Start magnetrøreren.
+			\label{lst:firststep}
 			
-			\item Sett termometeret eller temperatursensoren nedi lokket. Pass på at du ikke setter det så hardt nedi at det blir hull i bunnen av kalorimeteret. Mål temperaturen etter \SI{2}{\minute}.
+			\item Sett termometeret eller temperatursensoren nedi lokket.
+			Pass på at du ikke setter det så hardt nedi at det blir hull i bunnen av kalorimeteret.
+			Mål temperaturen etter \SI{2}{\minute}.
 			
-			\item Mål temperaturen til \SI{90}{\milli\liter} \SI{3.000}{\molar} salpetersyre og tilsett den til kalorimeteret. Mål temperaturen etter \SI{2}{\minute}. \label{lst:thirdstep}
+			\item Mål temperaturen til \SI{90}{\milli\liter} \SI{3.000}{\molar} salpetersyre og tilsett den til kalorimeteret.
+			Mål temperaturen etter \SI{2}{\minute}.
 			
-			\item Gjenta \crefrange{lst:firststep}{lst:thirdstep} for volumene i \Cref{tbl:cal}.
+			\item Hell ut løsningen, skyll og tørk kalorimeteret, magnetrørepinnen og termometeret eller temperatursensoren. \label{lst:fourthstep}
+			
+			\item Gjenta \crefrange{lst:firststep}{lst:fourthstep} for volumene i \Cref{tbl:cal}.
 		\end{enumerate}
 	
-		\item
+		\item Bestem varmetap til omgivelsene over tid.
 		\begin{enumerate}
-			\item 
+			\item Sett kalorimeteret oppå magnetrøreren og legg magnetrørepinnen oppi.
+			Hell \SI{50}{\milli\liter} \SI{3.000}{\molar} salpetersyre i kalorimeteret og sett på lokket.
+			 Start magnetrøreren.
+			
+			\item Sett termometeret eller temperatursensoren nedi lokket.
+			Pass på at du ikke setter det så hardt nedi at det blir hull i bunnen av kalorimeteret.
+			Mål temperaturen etter \SI{2}{\minute}.
+			
+			\item Tilsett \SI{50}{\milli\liter} \SI{3.000}{\molar} salpetersyre til kalorimeteret.
+			Mål temperaturen hvert minutt med termometeret eller mål temperaturen kontinuerlig med temperatursensoren.
+			Fortsett til det er gått \SI{15}{\minute}.
+			Du kan bruke \cref{tbl:heatloss} til å føre målingene.
+			
+			\item Hell ut løsningen, skyll og tørk kalorimeteret, magnetrørepinnen og termometeret eller temperatursensoren.
 		\end{enumerate}	
+	
+		\item Hvis du har tid, bestem kalorimeterets varmekapasitet.
+		\begin{enumerate}
+			\item Sett kalorimeteret oppå magnetrøreren og legg magnetrørepinnen oppi.
+			Hell \SI{50}{\milli\liter} vann i kalorimeteret og sett på lokket. \label{lst:firststep2}
+			
+			\item Sett termometeret eller temperatursensoren nedi lokket. Pass på at du ikke setter det så hardt nedi at det blir hull i bunnen av kalorimeteret.
+			Mål temperaturen etter \SI{2}{\minute}.
+			
+			\item Varm vann til omtrent \SI{40}{\degreeCelsius}.
+			Mål ut \SI{50}{\milli\liter} av vannet og mål temperaturen.
+			
+			\item Tilsett det varme vannet til kalorimeteret.
+			Mål temperaturen etter \SI{2}{\minute}. \label{lst:fourthstep2}
+			
+			\item Gjør totalt minst fem replikater av \crefrange{lst:firststep2}{lst:fourthstep2}.
+			Du kan bruke \cref{tbl:calheatcap} til å føre målingene.
+			
+			\item Hell ut løsningen, skyll og tørk kalorimeteret, magnetrørepinnen og termometeret eller temperatursensoren.
+		\end{enumerate}
 	\end{enumerate}
 
-		\begin{table}
+	\begin{table}[p]
 		\centering
 		\caption{Volumet salpetersyre, $V_{\ch{HNO3}}$, med temperatur $T_{\ch{HNO3}}$ og volumet natriumhydroksidløsning, $V_{\ch{NaOH}}$, med temperatur $T_{\ch{NaOH}}$.
 			Syren og basen hadde konsentrasjon \SI{3.000}{\molar}.
@@ -345,8 +391,56 @@
 			                              40 &                          60 &                \cellcolor{blue!10} &                 \cellcolor{blue!10} &     \cellcolor{blue!10} \\
 			                              50 &                          50 &                \cellcolor{blue!10} &                 \cellcolor{blue!10} &     \cellcolor{blue!10} \\ \bottomrule 
 		\end{tabular}         
+	\end{table}
+
+	\begin{table}[p]
+		\centering
+		\caption{Temperatur, $T$, etter blanding av \SI{50}{\milli\liter} \SI{3.000}{\molar} salpetersyre og \SI{50}{\milli\liter} \SI{3.000}{\molar} natriumhydroksidløsning etter tid, $t$.}
+		\label{tbl:heatloss}
+		\begin{tabular}[t]{S[table-format=1]l}
+			\toprule
+			$t/\si{\minute}$ & $T/\si{\degreeCelsius}$ \\ \midrule
+			               1 &     \cellcolor{blue!10} \\
+			               2 &     \cellcolor{blue!10} \\ 
+			               3 &     \cellcolor{blue!10} \\
+			               4 &     \cellcolor{blue!10} \\
+			               5 &     \cellcolor{blue!10} \\
+			               6 &     \cellcolor{blue!10} \\
+			               7 &     \cellcolor{blue!10} \\
+			               8 &     \cellcolor{blue!10} \\ \bottomrule 
+		\end{tabular}
+		\begin{tabular}[t]{S[table-format=1]l}
+			\toprule
+			$t/\si{\minute}$ & $T/\si{\degreeCelsius}$ \\ \midrule
+			               9 &     \cellcolor{blue!10} \\
+			              10 &     \cellcolor{blue!10} \\
+			              11 &     \cellcolor{blue!10} \\
+			              12 &     \cellcolor{blue!10} \\
+			              13 &     \cellcolor{blue!10} \\
+			              14 &     \cellcolor{blue!10} \\
+			              15 &     \cellcolor{blue!10} \\ \bottomrule 
+		\end{tabular}      
 	\end{table}	
+
+	\begin{table}[p]
+		\centering
+		\caption{Temperaturen $T_\mathrm{k}$ i \SI{50.0}{g} kaldt vann og temperaturen $T_\mathrm{v}$ i \SI{50.0}{g} varmt vann før blanding.
+			Etter blanding ble temperaturen ved termisk likevekt $T$.}
+		\label{tbl:calheatcap}
+		\begin{tabular}{r S[table-format=2.1] S[table-format=2.1] S[table-format=2.1] l}
+			\toprule
+			Replikat & $T_\mathrm{k}/\si{\degreeCelsius}$ & $T_\mathrm{v}/\si{\degreeCelsius}$ & $T/\si{\degreeCelsius}$ & $C_\mathrm{cal}/\si{\joule\per\kelvin}$ \\ \midrule
+			       1 &                \cellcolor{blue!10} &                \cellcolor{blue!10} &     \cellcolor{blue!10} &                     \cellcolor{blue!10} \\
+			       2 &                \cellcolor{blue!10} &                \cellcolor{blue!10} &     \cellcolor{blue!10} &                     \cellcolor{blue!10} \\ 
+			       3 &                \cellcolor{blue!10} &                \cellcolor{blue!10} &     \cellcolor{blue!10} &                     \cellcolor{blue!10} \\
+			       4 &                \cellcolor{blue!10} &                \cellcolor{blue!10} &     \cellcolor{blue!10} &                     \cellcolor{blue!10} \\
+			       5 &                \cellcolor{blue!10} &                \cellcolor{blue!10} &     \cellcolor{blue!10} &                     \cellcolor{blue!10} \\ \midrule
+			                                                                            \multicolumn{4}{r}{gjennomsnitt} &                     \cellcolor{blue!10} \\
+			                                                                            \multicolumn{4}{r}{standardfeil} &                     \cellcolor{blue!10} \\ \bottomrule 
+		\end{tabular}
+	\end{table}
 	
+	\clearpage
 	\input{../report}
 	
 \end{document}
